@@ -13,8 +13,10 @@ import EmissairesSection from '@/components/EmissairesSection';
 import HierarchieSection from '@/components/HierarchieSection';
 import CommandementsSection from '@/components/CommandementsSection';
 import ProtocoleSection from '@/components/ProtocoleSection';
+import LoadingScreen from '@/components/LoadingScreen';
 
 const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [hasEntered, setHasEntered] = useState(false);
 
   return (
@@ -26,9 +28,16 @@ const Index = () => {
       {/* Audio Player */}
       <AudioPlayer />
 
+      {/* Loading Screen */}
+      <AnimatePresence>
+        {isLoading && (
+          <LoadingScreen onComplete={() => setIsLoading(false)} />
+        )}
+      </AnimatePresence>
+
       {/* Navigation - shows after entering with fade */}
       <AnimatePresence>
-        {hasEntered && (
+        {!isLoading && hasEntered && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -42,10 +51,12 @@ const Index = () => {
       {/* Main Content */}
       <main>
         <AnimatePresence mode="wait">
-          {/* Hero only shows before entering */}
-          {!hasEntered && (
+          {/* Hero only shows after loading and before entering */}
+          {!isLoading && !hasEntered && (
             <motion.div
               key="hero"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
             >
