@@ -1,9 +1,15 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+
+// Import images
+import sokolDocks from '@/assets/sokol-docks.jpg';
+import sokolConvoy from '@/assets/sokol-convoy.jpg';
+import sokolInfluence from '@/assets/sokol-influence.jpg';
 
 const SokolSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [hoveredPhase, setHoveredPhase] = useState<string | null>(null);
 
   const phases = [
     {
@@ -12,6 +18,7 @@ const SokolSection = () => {
       subtitle: "Docks d'Elysian Island",
       description: "Contrôler silencieusement les registres de fret. Si une arme ou un kilo de drogue entre en ville par la mer, la Rascalov doit le savoir avant même le destinataire.",
       status: "ACTIVE",
+      image: sokolDocks,
     },
     {
       number: '02',
@@ -19,6 +26,7 @@ const SokolSection = () => {
       subtitle: "Logistique",
       description: "Proposer aux autres organisations une sécurité totale pour leurs convois. Nous ne vendons pas la drogue, nous vendons la certitude qu'elle arrivera à bon port.",
       status: "EN COURS",
+      image: sokolConvoy,
     },
     {
       number: '03',
@@ -26,6 +34,7 @@ const SokolSection = () => {
       subtitle: "Corruption Blanche",
       description: "Utiliser les bénéfices pour financer des entreprises de transport légales, créant un bouclier juridique parfait.",
       status: "PLANIFIÉ",
+      image: sokolInfluence,
     },
   ];
 
@@ -112,6 +121,8 @@ const SokolSection = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.4, delay: 0.3 + index * 0.15 }}
+                onMouseEnter={() => setHoveredPhase(phase.number)}
+                onMouseLeave={() => setHoveredPhase(null)}
               >
                 {/* Phase number marker */}
                 <div className="hidden md:flex absolute left-0 top-0 w-16 h-16 items-center justify-center">
@@ -119,9 +130,26 @@ const SokolSection = () => {
                   <div className="absolute w-6 h-6 rounded-full border border-steel/40" />
                 </div>
 
-                {/* Phase card - clean, technical */}
-                <div className="relative bg-card/50 border border-steel/20 p-6 backdrop-blur-sm group hover:border-steel/40 transition-colors duration-300">
-                  <div className="relative">
+                {/* Phase card - with image background */}
+                <div className="relative bg-card/50 border border-steel/20 backdrop-blur-sm group hover:border-steel/40 transition-colors duration-300 overflow-hidden">
+                  {/* Background Image */}
+                  <motion.div 
+                    className="absolute inset-0"
+                    animate={{ 
+                      scale: hoveredPhase === phase.number ? 1.1 : 1.05,
+                      opacity: hoveredPhase === phase.number ? 0.35 : 0.15
+                    }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
+                    <img 
+                      src={phase.image} 
+                      alt={phase.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/50" />
+                  </motion.div>
+
+                  <div className="relative z-10 p-6">
                     <div className="flex flex-wrap items-center gap-4 mb-4">
                       <span className="font-orbitron text-xl text-steel font-bold">
                         {phase.number}
