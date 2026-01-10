@@ -219,7 +219,7 @@ const HeritageSection = () => {
                   <p className="font-rajdhani text-foreground/70 leading-relaxed text-sm md:text-base">
                     La Rascalov n'est pas née dans le luxe, mais dans le froid des chantiers navals 
                     de <span className="text-ivory font-medium">Saint-Pétersbourg</span> à la fin des années 80. 
-                    Sous l'impulsion de <span className="text-blood font-semibold underline decoration-blood/40 underline-offset-2">Sergueï Zeitsey</span>, 
+                    Sous l'impulsion de <span className="text-blood font-semibold underline decoration-blood/40 underline-offset-2">Sergueï Mikhailov</span>, 
                     l'organisation a compris une vérité fondamentale : la puissance ne réside pas dans 
                     le produit, mais dans le chemin qu'il parcourt.
                   </p>

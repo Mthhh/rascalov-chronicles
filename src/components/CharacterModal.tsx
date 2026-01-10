@@ -81,7 +81,7 @@ const CharacterModal = ({ character, isOpen, onClose }: CharacterModalProps) => 
                           whileHover={{ scale: 1.1 }}
                           transition={{ duration: 0.5 }}
                         />
-                      ) : character.id === 'azarov' ? (
+                      ) : character.id === 'mikhail' ? (
                         <Brain className="w-20 h-20 text-steel/30 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                       ) : (
                         <Shield className="w-20 h-20 text-steel/30 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />

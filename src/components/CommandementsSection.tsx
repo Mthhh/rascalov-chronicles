@@ -187,7 +187,7 @@ const CommandementsSection = () => {
               "Celui qui brise une loi brise le pacte. Celui qui brise le pacte est brisé."
             </p>
             <span className="font-orbitron text-[10px] text-steel tracking-widest">
-              — SERGUEÏ ZEITSEY, FONDATEUR
+              — SERGUEÏ MIKHAILOV, FONDATEUR
             </span>
           </div>
         </motion.div>
