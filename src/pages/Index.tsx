@@ -8,9 +8,10 @@ import HeroSection from '@/components/HeroSection';
 import HeritageSection from '@/components/HeritageSection';
 import TimelineSection from '@/components/TimelineSection';
 import SokolSection from '@/components/SokolSection';
-import EmissairesSection from '@/components/EmissairesSection';
-import CommandementsSection from '@/components/CommandementsSection';
 import FacadeSection from '@/components/FacadeSection';
+import EmissairesSection from '@/components/EmissairesSection';
+import HierarchieSection from '@/components/HierarchieSection';
+import CommandementsSection from '@/components/CommandementsSection';
 import ProtocoleSection from '@/components/ProtocoleSection';
 
 const Index = () => {
@@ -65,9 +66,10 @@ const Index = () => {
               <HeritageSection />
               <TimelineSection />
               <SokolSection />
-              <EmissairesSection />
-              <CommandementsSection />
               <FacadeSection />
+              <EmissairesSection />
+              <HierarchieSection />
+              <CommandementsSection />
               <ProtocoleSection />
             </motion.div>
           )}

@@ -11,9 +11,10 @@ const navItems: NavItem[] = [
   { id: 'heritage', label: 'HÉRITAGE', labelRu: 'НАСЛЕДИЕ' },
   { id: 'timeline', label: 'DYNASTIE', labelRu: 'ДИНАСТИЯ' },
   { id: 'sokol', label: 'SOKOL', labelRu: 'СОКОЛ' },
-  { id: 'emissaires', label: 'ÉMISSAIRES', labelRu: 'АГЕНТЫ' },
-  { id: 'commandements', label: 'LOIS', labelRu: 'ЗАКОНЫ' },
   { id: 'facade', label: 'FAÇADE', labelRu: 'ФАСАД' },
+  { id: 'emissaires', label: 'ÉMISSAIRES', labelRu: 'АГЕНТЫ' },
+  { id: 'hierarchie', label: 'HIÉRARCHIE', labelRu: 'ИЕРАРХИЯ' },
+  { id: 'commandements', label: 'LOIS', labelRu: 'ЗАКОНЫ' },
   { id: 'protocole', label: 'PROTOCOLE', labelRu: 'ПРОТОКОЛ' },
 ];
 
