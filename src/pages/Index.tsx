@@ -18,7 +18,6 @@ const Index = () => {
   return (
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Global Effects */}
-      <CustomCursor />
       <FilmGrain />
       <ParticleBackground />
       
