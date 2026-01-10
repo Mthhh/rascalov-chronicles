@@ -16,6 +16,7 @@ interface CharacterData {
   biography: string;
   traits: string[];
   sokolRole: string;
+  image?: string;
 }
 
 interface CharacterModalProps {
@@ -68,16 +69,27 @@ const CharacterModal = ({ character, isOpen, onClose }: CharacterModalProps) => 
               <div className="p-6 md:p-8">
                 {/* Top section - Photo & Basic Info */}
                 <div className="flex flex-col md:flex-row gap-8 mb-8">
-                  {/* Photo placeholder */}
+                  {/* Character Photo */}
                   <div className="flex-shrink-0">
-                    <div className="relative w-48 h-64 bg-secondary/50 border border-steel/30 flex items-center justify-center">
-                      {character.id === 'azarov' ? (
-                        <Brain className="w-20 h-20 text-steel/30" />
+                    <div className="relative w-48 h-64 bg-secondary/50 border border-steel/30 overflow-hidden group">
+                      {character.image ? (
+                        <motion.img 
+                          src={character.image}
+                          alt={character.name}
+                          className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-500"
+                          initial={{ scale: 1 }}
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.5 }}
+                        />
+                      ) : character.id === 'azarov' ? (
+                        <Brain className="w-20 h-20 text-steel/30 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                       ) : (
-                        <Shield className="w-20 h-20 text-steel/30" />
+                        <Shield className="w-20 h-20 text-steel/30 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                       )}
+                      {/* Overlay gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent pointer-events-none" />
                       {/* Stamp */}
-                      <div className="absolute top-4 right-4 text-blood/30 font-orbitron text-xs tracking-widest rotate-12 border border-blood/30 px-2 py-1">
+                      <div className="absolute top-4 right-4 text-blood/40 font-orbitron text-xs tracking-widest rotate-12 border border-blood/40 px-2 py-1 bg-background/30 backdrop-blur-sm">
                         СЕКРЕТНО
                       </div>
                       {/* Corners */}

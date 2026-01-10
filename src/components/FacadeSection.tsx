@@ -2,6 +2,8 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Building2, Truck, Package, FileText, ExternalLink } from 'lucide-react';
 
+import warehouseImage from '@/assets/facade-warehouse.jpg';
+
 const FacadeSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -77,9 +79,26 @@ const FacadeSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="bg-card/50 border border-steel/20 overflow-hidden">
+          <div className="bg-card/50 border border-steel/20 overflow-hidden relative group">
+            {/* Background Image */}
+            <div className="absolute inset-0 overflow-hidden">
+              <motion.div
+                className="absolute inset-0"
+                initial={{ scale: 1.05 }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
+                <img 
+                  src={warehouseImage} 
+                  alt="MM Global Export Warehouse"
+                  className="w-full h-full object-cover filter grayscale opacity-20 group-hover:opacity-30 transition-opacity duration-500"
+                />
+              </motion.div>
+              <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/70" />
+            </div>
+
             {/* Header bar */}
-            <div className="flex items-center justify-between px-6 py-3 bg-secondary/50 border-b border-steel/20">
+            <div className="relative z-10 flex items-center justify-between px-6 py-3 bg-secondary/50 border-b border-steel/20 backdrop-blur-sm">
               <div className="flex items-center gap-3">
                 <Building2 className="w-4 h-4 text-steel" />
                 <span className="font-orbitron text-[10px] text-steel tracking-wider">
@@ -91,10 +110,10 @@ const FacadeSection = () => {
               </span>
             </div>
 
-            <div className="p-8 md:flex md:gap-12">
+            <div className="relative z-10 p-8 md:flex md:gap-12">
               {/* Logo/Icon area */}
               <div className="flex-shrink-0 mb-6 md:mb-0">
-                <div className="w-32 h-32 bg-secondary/50 border border-steel/30 flex items-center justify-center">
+                <div className="w-32 h-32 bg-secondary/70 border border-steel/30 flex items-center justify-center backdrop-blur-sm group-hover:border-blood/30 transition-colors duration-300">
                   <div className="text-center">
                     <span className="font-cinzel text-2xl text-ivory block">MM</span>
                     <span className="font-orbitron text-[10px] text-steel tracking-wider">GLOBAL</span>
@@ -162,7 +181,7 @@ const FacadeSection = () => {
             </div>
 
             {/* Footer bar */}
-            <div className="px-6 py-3 bg-secondary/30 border-t border-steel/20 flex justify-between items-center">
+            <div className="relative z-10 px-6 py-3 bg-secondary/30 border-t border-steel/20 flex justify-between items-center backdrop-blur-sm">
               <span className="font-orbitron text-[10px] text-steel/60">
                 REF: RSC-MMGE-2024
               </span>
