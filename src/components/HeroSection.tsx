@@ -41,12 +41,9 @@ const HeroSection = ({ onEnter }: HeroSectionProps) => {
     setIsEntering(true);
     setTimeout(() => {
       onEnter();
-      // Smooth scroll to heritage section
-      const heritageSection = document.getElementById('heritage');
-      if (heritageSection) {
-        heritageSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 800);
+      // Instant scroll to top (heritage will be at top since hero is hidden)
+      window.scrollTo(0, 0);
+    }, 600);
   };
 
   return (
