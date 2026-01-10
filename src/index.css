@@ -93,14 +93,7 @@
     font-family: 'Rajdhani', sans-serif;
   }
 
-  /* Custom cursor */
-  html {
-    cursor: none;
-  }
-
-  a, button, [role="button"] {
-    cursor: none;
-  }
+  /* Default cursor restored */
 }
 
 @layer utilities {
