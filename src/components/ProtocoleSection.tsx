@@ -100,7 +100,7 @@ const ProtocoleSection = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
             >
-              <div className="relative bg-background/40 border border-steel/20 overflow-hidden backdrop-blur-sm transition-colors duration-300 hover:border-blood/40">
+              <div className="relative bg-background/40 border border-steel/20 overflow-hidden backdrop-blur-sm transition-colors duration-300 hover:border-blood/40 group">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0 opacity-20">
                   <img 
@@ -115,8 +115,8 @@ const ProtocoleSection = () => {
                 <div className="relative z-10 flex flex-col md:flex-row gap-6 p-6 md:p-8">
                   {/* Icon section */}
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 md:w-20 md:h-20 border border-steel/30 flex items-center justify-center bg-background/60 backdrop-blur-sm">
-                      <protocol.icon className="w-8 h-8 md:w-10 md:h-10 text-steel" />
+                    <div className="w-16 h-16 md:w-20 md:h-20 border border-steel/30 flex items-center justify-center bg-background/60 backdrop-blur-sm transition-colors duration-300 group-hover:border-blood/40">
+                      <protocol.icon className="w-8 h-8 md:w-10 md:h-10 text-steel transition-colors duration-300 group-hover:text-blood" />
                     </div>
                   </div>
 
