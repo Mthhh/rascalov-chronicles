@@ -7,10 +7,16 @@ import timeline1991 from '@/assets/timeline-1991.jpg';
 import timeline2010 from '@/assets/timeline-2010.jpg';
 import timeline2024 from '@/assets/timeline-2024.jpg';
 
+// Import supplementary documents
+import document1991 from '@/assets/document-1991.jpg';
+import mapBaltic from '@/assets/map-baltic.jpg';
+import surveillance2024 from '@/assets/surveillance-2024.jpg';
+
 const TimelineSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [hoveredEvent, setHoveredEvent] = useState<string | null>(null);
+  const [hoveredDoc, setHoveredDoc] = useState<string | null>(null);
 
   const events = [
     {
@@ -22,6 +28,9 @@ const TimelineSection = () => {
       icon: MapPin,
       russian: 'ОСНОВАНИЕ',
       image: timeline1991,
+      document: document1991,
+      docLabel: 'DOCUMENT DÉCLASSIFIÉ',
+      docDesc: 'Rapport KGB — Dossier Zeitsey',
     },
     {
       year: '2010',
@@ -32,6 +41,9 @@ const TimelineSection = () => {
       icon: Anchor,
       russian: 'БАЛТИЙСКАЯ ЭКСПАНСИЯ',
       image: timeline2010,
+      document: mapBaltic,
+      docLabel: 'CARTE OPÉRATIONNELLE',
+      docDesc: 'Routes maritimes contrôlées',
     },
     {
       year: '2024',
@@ -43,6 +55,9 @@ const TimelineSection = () => {
       russian: 'ОПЕРАЦИЯ СОКОЛ',
       image: timeline2024,
       current: true,
+      document: surveillance2024,
+      docLabel: 'SURVEILLANCE ACTIVE',
+      docDesc: 'Port de Los Santos — Live Feed',
     },
   ];
 
@@ -198,8 +213,76 @@ const TimelineSection = () => {
                 </div>
               </div>
 
-              {/* Spacer for alternating layout */}
-              <div className="hidden md:block md:w-[calc(50%-3rem)]" />
+              {/* Document/Image panel for opposite side */}
+              <motion.div 
+                className={`hidden md:block md:w-[calc(50%-3rem)] ${
+                  index % 2 === 0 ? 'md:pl-8' : 'md:pr-8'
+                }`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.4 + index * 0.2 }}
+                onMouseEnter={() => setHoveredDoc(event.year)}
+                onMouseLeave={() => setHoveredDoc(null)}
+              >
+                <div className="relative group cursor-pointer">
+                  {/* Document image */}
+                  <motion.div 
+                    className="relative overflow-hidden border border-steel/20 bg-card/20"
+                    animate={{
+                      scale: hoveredDoc === event.year ? 1.02 : 1,
+                      borderColor: hoveredDoc === event.year ? 'hsl(var(--primary) / 0.4)' : 'hsl(var(--steel) / 0.2)'
+                    }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <motion.img 
+                      src={event.document} 
+                      alt={event.docLabel}
+                      className="w-full h-48 object-cover"
+                      animate={{
+                        scale: hoveredDoc === event.year ? 1.1 : 1.05,
+                        filter: hoveredDoc === event.year ? 'grayscale(0%) brightness(0.9)' : 'grayscale(30%) brightness(0.7)'
+                      }}
+                      transition={{ duration: 0.6 }}
+                    />
+                    
+                    {/* Overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+                    
+                    {/* Scanlines effect */}
+                    <div className="absolute inset-0 opacity-20" style={{
+                      backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.3) 2px, rgba(0,0,0,0.3) 4px)'
+                    }} />
+                    
+                    {/* Label */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <span className="font-orbitron text-[10px] text-primary tracking-[0.2em] block mb-1">
+                        {event.docLabel}
+                      </span>
+                      <span className="font-rajdhani text-sm text-steel">
+                        {event.docDesc}
+                      </span>
+                    </div>
+                    
+                    {/* Corner brackets */}
+                    <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-primary/40" />
+                    <div className="absolute top-2 right-2 w-4 h-4 border-t border-r border-primary/40" />
+                    <div className="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-primary/40" />
+                    <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-primary/40" />
+                  </motion.div>
+                  
+                  {/* Typewriter annotation */}
+                  <motion.div 
+                    className="mt-3 font-mono text-xs text-steel/60 leading-relaxed"
+                    animate={{ opacity: hoveredDoc === event.year ? 1 : 0.6 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <span className="text-primary/60">{">"}</span> 
+                    {index === 0 && "Origine des fonds confirmée. Connexions FSB établies."}
+                    {index === 1 && "Corridor sécurisé. 47 navires sous contrôle indirect."}
+                    {index === 2 && "Cibles identifiées. Infiltration en cours..."}
+                  </motion.div>
+                </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
