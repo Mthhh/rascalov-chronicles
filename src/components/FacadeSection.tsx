@@ -1,6 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Building2, Truck, Package, FileText, ExternalLink } from 'lucide-react';
+import TypewriterNote from './TypewriterNote';
 
 import warehouseImage from '@/assets/facade-warehouse.jpg';
 import mmGlobalLogo from '@/assets/mm-global-logo.png';
@@ -221,17 +222,13 @@ const FacadeSection = () => {
         </motion.div>
 
         {/* Annotation manuscrite */}
-        <motion.div
-          className="absolute -right-4 top-1/3 hidden lg:block"
-          initial={{ opacity: 0, rotate: -5 }}
-          animate={isInView ? { opacity: 0.7, rotate: -5 } : {}}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <div className="handwritten-note text-blood text-sm -rotate-6">
-            → Couverture parfaite<br/>
-            <span className="text-xs">- Agent K.</span>
-          </div>
-        </motion.div>
+        <TypewriterNote
+          lines={["→ Couverture parfaite"]}
+          signature="- Agent K."
+          className="absolute -right-4 top-1/3"
+          rotation="-rotate-6"
+          delay={0.8}
+        />
       </div>
     </section>
   );

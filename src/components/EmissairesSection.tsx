@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { User, Brain, Shield, Eye, MousePointer } from 'lucide-react';
 import CharacterModal from './CharacterModal';
+import TypewriterNote from './TypewriterNote';
 
 import azarovImage from '@/assets/character-azarov.jpg';
 import marcoImage from '@/assets/character-marco.jpg';
@@ -218,18 +219,13 @@ const EmissairesSection = () => {
         </div>
 
         {/* Handwritten annotation */}
-        <motion.div
-          className="absolute -right-4 top-1/2 hidden lg:block"
-          initial={{ opacity: 0, rotate: -8 }}
-          animate={isInView ? { opacity: 0.6, rotate: -8 } : {}}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <div className="handwritten-note text-blood text-sm -rotate-3">
-            Duo très efficace<br/>
-            Surveillance prioritaire<br/>
-            <span className="text-xs">- Agent V.</span>
-          </div>
-        </motion.div>
+        <TypewriterNote
+          lines={["Duo très efficace", "Surveillance prioritaire"]}
+          signature="- Agent V."
+          className="absolute -right-4 top-1/2"
+          rotation="-rotate-3"
+          delay={0.8}
+        />
       </div>
 
       {/* Character Modal */}
