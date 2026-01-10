@@ -33,66 +33,60 @@ const ParticleBackground = () => {
 
     // Create slow, organic smoke particle
     const createParticle = (): Particle => {
-      const maxLife = 800 + Math.random() * 400;
+      const maxLife = 600 + Math.random() * 400;
       return {
         x: Math.random() * canvas.width,
         y: canvas.height * (0.5 + Math.random() * 0.5),
-        size: 100 + Math.random() * 120,
-        speedY: -(0.03 + Math.random() * 0.08),
-        speedX: (Math.random() - 0.5) * 0.15,
-        opacity: 0.01 + Math.random() * 0.015,
+        size: 80 + Math.random() * 150,
+        speedY: -(0.05 + Math.random() * 0.15),
+        speedX: (Math.random() - 0.5) * 0.3,
+        opacity: 0.015 + Math.random() * 0.025,
         life: 0,
         maxLife,
       };
     };
 
-    // Create initial smoke particles - reduced count for performance
-    for (let i = 0; i < 6; i++) {
+    // Create initial smoke particles
+    for (let i = 0; i < 12; i++) {
       particlesRef.current.push(createParticle());
     }
 
-    let frameCount = 0;
     const animate = () => {
-      frameCount++;
-      // Only update every 2nd frame for performance (30fps instead of 60fps)
-      if (frameCount % 2 === 0) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        particlesRef.current.forEach((particle, index) => {
-          particle.life += 2;
-          particle.x += particle.speedX * 2;
-          particle.y += particle.speedY * 2;
+      particlesRef.current.forEach((particle, index) => {
+        particle.life++;
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
 
-          // Slight horizontal drift - less frequent
-          if (frameCount % 4 === 0) {
-            particle.speedX += (Math.random() - 0.5) * 0.01;
-            particle.speedX = Math.max(-0.2, Math.min(0.2, particle.speedX));
-          }
+        // Slight horizontal drift
+        particle.speedX += (Math.random() - 0.5) * 0.01;
+        particle.speedX = Math.max(-0.3, Math.min(0.3, particle.speedX));
 
-          // Fade based on life
-          const lifeRatio = particle.life / particle.maxLife;
-          const fadeOpacity = particle.opacity * Math.sin(lifeRatio * Math.PI);
+        // Fade based on life
+        const lifeRatio = particle.life / particle.maxLife;
+        const fadeOpacity = particle.opacity * Math.sin(lifeRatio * Math.PI);
 
-          // Draw smoke - simplified gradient
-          const gradient = ctx.createRadialGradient(
-            particle.x, particle.y, 0,
-            particle.x, particle.y, particle.size
-          );
-          gradient.addColorStop(0, `hsla(0, 0%, 6%, ${fadeOpacity})`);
-          gradient.addColorStop(0.5, `hsla(0, 0%, 4%, ${fadeOpacity * 0.4})`);
-          gradient.addColorStop(1, 'transparent');
+        // Draw smoke - dark, diffuse, organic
+        const gradient = ctx.createRadialGradient(
+          particle.x, particle.y, 0,
+          particle.x, particle.y, particle.size
+        );
+        gradient.addColorStop(0, `hsla(0, 0%, 8%, ${fadeOpacity})`);
+        gradient.addColorStop(0.4, `hsla(0, 0%, 5%, ${fadeOpacity * 0.6})`);
+        gradient.addColorStop(0.7, `hsla(0, 0%, 3%, ${fadeOpacity * 0.3})`);
+        gradient.addColorStop(1, 'transparent');
 
-          ctx.beginPath();
-          ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-          ctx.fillStyle = gradient;
-          ctx.fill();
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
+        ctx.fill();
 
-          // Reset particle if off screen or dead
-          if (particle.y < -particle.size || particle.life >= particle.maxLife) {
-            particlesRef.current[index] = createParticle();
-          }
-        });
-      }
+        // Reset particle if off screen or dead
+        if (particle.y < -particle.size || particle.life >= particle.maxLife) {
+          particlesRef.current[index] = createParticle();
+        }
+      });
 
       animationRef.current = requestAnimationFrame(animate);
     };
