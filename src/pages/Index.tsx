@@ -14,6 +14,7 @@ import HierarchieSection from '@/components/HierarchieSection';
 import CommandementsSection from '@/components/CommandementsSection';
 import ProtocoleSection from '@/components/ProtocoleSection';
 import LoadingScreen from '@/components/LoadingScreen';
+import ScrollProgressBar from '@/components/ScrollProgressBar';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,6 +35,9 @@ const Index = () => {
           <LoadingScreen onComplete={() => setIsLoading(false)} />
         )}
       </AnimatePresence>
+
+      {/* Scroll Progress Bar - shows after entering */}
+      {hasEntered && <ScrollProgressBar />}
 
       {/* Navigation - shows after entering with fade */}
       <AnimatePresence>
