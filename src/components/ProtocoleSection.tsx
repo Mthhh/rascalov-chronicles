@@ -97,43 +97,131 @@ const ProtocoleSection = () => {
           ))}
         </div>
 
-        {/* Final Quote Section */}
+        {/* Final Quote Section - Premium framed */}
         <motion.div
-          className="mt-24 text-center relative"
-          initial={{ opacity: 0, y: 20 }}
+          className="mt-24 relative"
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <div className="inline-block relative">
-            <span className="font-orbitron text-xs text-steel tracking-[0.3em] block mb-6">
-              DOSSIER VI — LE MOT DE LA FIN
-            </span>
+          {/* Outer decorative frame */}
+          <div className="absolute -inset-4 md:-inset-6 pointer-events-none">
+            {/* Corner decorations */}
+            <div className="absolute top-0 left-0 w-10 h-10 md:w-16 md:h-16">
+              <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-blood via-blood/50 to-transparent" />
+              <div className="absolute top-0 left-0 w-[1px] h-full bg-gradient-to-b from-blood via-blood/50 to-transparent" />
+              <div className="absolute top-2 left-2 w-1.5 h-1.5 rotate-45 border border-blood/60 bg-blood/20" />
+            </div>
+            <div className="absolute top-0 right-0 w-10 h-10 md:w-16 md:h-16">
+              <div className="absolute top-0 right-0 w-full h-[1px] bg-gradient-to-l from-blood via-blood/50 to-transparent" />
+              <div className="absolute top-0 right-0 w-[1px] h-full bg-gradient-to-b from-blood via-blood/50 to-transparent" />
+              <div className="absolute top-2 right-2 w-1.5 h-1.5 rotate-45 border border-blood/60 bg-blood/20" />
+            </div>
+            <div className="absolute bottom-0 left-0 w-10 h-10 md:w-16 md:h-16">
+              <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-blood via-blood/50 to-transparent" />
+              <div className="absolute bottom-0 left-0 w-[1px] h-full bg-gradient-to-t from-blood via-blood/50 to-transparent" />
+              <div className="absolute bottom-2 left-2 w-1.5 h-1.5 rotate-45 border border-blood/60 bg-blood/20" />
+            </div>
+            <div className="absolute bottom-0 right-0 w-10 h-10 md:w-16 md:h-16">
+              <div className="absolute bottom-0 right-0 w-full h-[1px] bg-gradient-to-l from-blood via-blood/50 to-transparent" />
+              <div className="absolute bottom-0 right-0 w-[1px] h-full bg-gradient-to-t from-blood via-blood/50 to-transparent" />
+              <div className="absolute bottom-2 right-2 w-1.5 h-1.5 rotate-45 border border-blood/60 bg-blood/20" />
+            </div>
+          </div>
+
+          {/* Inner content container */}
+          <div className="relative bg-gradient-to-b from-background/60 via-background/40 to-background/60 backdrop-blur-sm border border-steel/10 p-8 md:p-12 lg:p-16 text-center">
+            {/* Inner glow effect */}
+            <div className="absolute inset-0 pointer-events-none" style={{
+              boxShadow: 'inset 0 0 80px hsl(var(--blood) / 0.05), inset 0 0 150px hsl(var(--background) / 0.5)'
+            }} />
+
+            {/* Header badge */}
+            <div className="relative inline-block mb-8">
+              <div className="flex items-center justify-center gap-3">
+                <div className="w-8 md:w-12 h-px bg-gradient-to-r from-transparent via-blood/50 to-blood" />
+                <span className="font-orbitron text-[10px] md:text-xs text-blood tracking-[0.4em] font-medium">
+                  DOSSIER VI — LE MOT DE LA FIN
+                </span>
+                <div className="w-8 md:w-12 h-px bg-gradient-to-l from-transparent via-blood/50 to-blood" />
+              </div>
+            </div>
             
-            <blockquote className="font-cormorant text-2xl md:text-3xl lg:text-4xl text-ivory leading-relaxed max-w-4xl italic">
-              « Le chaos est une échelle.
-              <br />
-              <span className="text-primary not-italic font-medium">La Rascalov est celui qui tient l'échelle.</span> »
+            {/* Main quote */}
+            <blockquote className="relative mb-10">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-6xl text-blood/20 font-serif">«</div>
+              <p 
+                className="font-cinzel text-2xl md:text-3xl lg:text-4xl leading-relaxed italic max-w-3xl mx-auto"
+                style={{
+                  background: 'linear-gradient(180deg, hsl(var(--ivory)) 0%, hsl(var(--ivory) / 0.7) 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
+                Le chaos est une échelle.
+              </p>
+              <p 
+                className="font-cinzel text-2xl md:text-3xl lg:text-4xl leading-relaxed mt-2 max-w-3xl mx-auto"
+                style={{
+                  background: 'linear-gradient(90deg, hsl(var(--blood-dark)) 0%, hsl(var(--blood)) 50%, hsl(var(--blood-dark)) 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  filter: 'drop-shadow(0 0 20px hsl(var(--blood) / 0.3))'
+                }}
+              >
+                La Rascalov est celui qui tient l'échelle.
+              </p>
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-6xl text-blood/20 font-serif">»</div>
             </blockquote>
             
-            <div className="mt-8 space-y-2">
-              <p className="font-rajdhani text-lg text-steel">
+            {/* Separator */}
+            <div className="flex items-center justify-center gap-4 my-8">
+              <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent via-steel/30 to-steel/50" />
+              <div className="w-1.5 h-1.5 rotate-45 bg-blood/40" />
+              <div className="w-16 md:w-24 h-px bg-gradient-to-l from-transparent via-steel/30 to-steel/50" />
+            </div>
+
+            {/* Sub-messages */}
+            <div className="space-y-3 relative">
+              <p className="font-rajdhani text-base md:text-lg text-steel/70 tracking-wide">
                 Nous ne cherchons pas la guerre contre la police ou les gangs.
               </p>
-              <p className="font-rajdhani text-xl text-ivory">
-                Nous cherchons le <span className="text-primary font-semibold">CONTRÔLE</span>.
+              <p className="font-rajdhani text-lg md:text-xl text-ivory font-medium">
+                Nous cherchons le{' '}
+                <span 
+                  className="font-semibold"
+                  style={{
+                    background: 'linear-gradient(90deg, hsl(var(--blood)) 0%, hsl(var(--blood-glow)) 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text'
+                  }}
+                >
+                  CONTRÔLE
+                </span>.
               </p>
-              <p className="font-rajdhani text-lg text-steel">
+              <p className="font-rajdhani text-base md:text-lg text-steel/60 italic">
                 Et le contrôle commence par le silence.
               </p>
             </div>
 
-            {/* Bottom decorative element */}
+            {/* Bottom signature */}
             <div className="mt-12 flex items-center justify-center gap-4">
-              <div className="w-16 h-px bg-gradient-to-r from-transparent to-steel/30" />
-              <span className="font-orbitron text-xs text-steel/40 tracking-[0.3em]">
+              <div className="w-12 md:w-20 h-px bg-gradient-to-r from-transparent to-steel/40" />
+              <span 
+                className="font-orbitron text-[10px] md:text-xs tracking-[0.3em]"
+                style={{
+                  background: 'linear-gradient(90deg, hsl(var(--steel) / 0.5) 0%, hsl(var(--steel)) 50%, hsl(var(--steel) / 0.5) 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
                 RASCALOV СЕМЬЯ
               </span>
-              <div className="w-16 h-px bg-gradient-to-l from-transparent to-steel/30" />
+              <div className="w-12 md:w-20 h-px bg-gradient-to-l from-transparent to-steel/40" />
             </div>
           </div>
         </motion.div>
