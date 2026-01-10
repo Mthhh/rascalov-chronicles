@@ -95,181 +95,60 @@ const ProtocoleSection = () => {
           {protocols.map((protocol, index) => (
             <motion.div
               key={protocol.title}
-              className="relative group cursor-pointer"
+              className="relative"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              whileHover={{ y: -4 }}
             >
-              {/* Glow effect on hover */}
-              <motion.div
-                className="absolute -inset-1 rounded-sm bg-blood/20 blur-xl z-0"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
-                transition={{ duration: 0.4 }}
-              />
-              
-              <motion.div 
-                className="relative bg-background/40 border border-steel/20 overflow-hidden backdrop-blur-sm"
-                animate={{ 
-                  borderColor: hoveredIndex === index ? 'hsl(var(--blood) / 0.4)' : 'hsl(var(--steel) / 0.2)',
-                  boxShadow: hoveredIndex === index 
-                    ? '0 20px 40px -20px hsl(var(--blood) / 0.3), inset 0 1px 0 hsl(var(--ivory) / 0.05)' 
-                    : '0 0 0 transparent'
-                }}
-                transition={{ duration: 0.4 }}
-              >
+              <div className="relative bg-background/40 border border-steel/20 overflow-hidden backdrop-blur-sm">
                 {/* Background Image */}
-                <motion.div 
-                  className="absolute inset-0 z-0"
-                  animate={{ 
-                    scale: hoveredIndex === index ? 1.1 : 1,
-                    opacity: hoveredIndex === index ? 0.4 : 0.15,
-                    x: hoveredIndex === index ? 10 : 0
-                  }}
-                  transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-                >
+                <div className="absolute inset-0 z-0 opacity-20">
                   <img 
                     src={protocol.image} 
                     alt={protocol.title}
                     className="w-full h-full object-cover"
                   />
-                  <motion.div 
-                    className="absolute inset-0"
-                    animate={{
-                      background: hoveredIndex === index 
-                        ? 'linear-gradient(90deg, hsl(var(--background)) 0%, hsl(var(--background) / 0.85) 40%, hsl(var(--background) / 0.6) 100%)'
-                        : 'linear-gradient(90deg, hsl(var(--background)) 0%, hsl(var(--background) / 0.95) 50%, hsl(var(--background) / 0.8) 100%)'
-                    }}
-                    transition={{ duration: 0.4 }}
-                  />
-                </motion.div>
-
-                {/* Left accent line with animation */}
-                <motion.div 
-                  className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blood via-blood to-blood-dark z-10"
-                  initial={{ scaleY: 0, opacity: 0 }}
-                  animate={{ 
-                    scaleY: hoveredIndex === index ? 1 : 0,
-                    opacity: hoveredIndex === index ? 1 : 0
-                  }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                  style={{ originY: 0 }}
-                />
-                
-                {/* Top shimmer effect */}
-                <motion.div
-                  className="absolute top-0 left-0 right-0 h-px z-10"
-                  style={{
-                    background: 'linear-gradient(90deg, transparent, hsl(var(--ivory) / 0.3), transparent)'
-                  }}
-                  initial={{ x: '-100%', opacity: 0 }}
-                  animate={{ 
-                    x: hoveredIndex === index ? '100%' : '-100%',
-                    opacity: hoveredIndex === index ? 1 : 0
-                  }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                />
+                  <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/70" />
+                </div>
 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col md:flex-row gap-6 p-6 md:p-8">
                   {/* Icon section */}
                   <div className="flex-shrink-0">
-                    <motion.div 
-                      className="w-16 h-16 md:w-20 md:h-20 border flex items-center justify-center bg-background/60 backdrop-blur-sm"
-                      animate={{ 
-                        borderColor: hoveredIndex === index ? 'hsl(var(--blood) / 0.6)' : 'hsl(var(--steel) / 0.3)',
-                        backgroundColor: hoveredIndex === index ? 'hsl(var(--blood) / 0.1)' : 'hsl(var(--background) / 0.6)',
-                        rotate: hoveredIndex === index ? 3 : 0,
-                        scale: hoveredIndex === index ? 1.05 : 1
-                      }}
-                      transition={{ duration: 0.4, ease: "easeOut" }}
-                    >
-                      <motion.div
-                        animate={{ 
-                          scale: hoveredIndex === index ? 1.15 : 1,
-                          rotate: hoveredIndex === index ? -3 : 0
-                        }}
-                        transition={{ duration: 0.4, ease: "easeOut" }}
-                      >
-                        <protocol.icon 
-                          className="w-8 h-8 md:w-10 md:h-10 transition-colors duration-300" 
-                          style={{ color: hoveredIndex === index ? 'hsl(var(--blood))' : 'hsl(var(--steel))' }}
-                        />
-                      </motion.div>
-                    </motion.div>
+                    <div className="w-16 h-16 md:w-20 md:h-20 border border-steel/30 flex items-center justify-center bg-background/60 backdrop-blur-sm">
+                      <protocol.icon className="w-8 h-8 md:w-10 md:h-10 text-steel" />
+                    </div>
                   </div>
 
                   {/* Text Content */}
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-3 mb-4">
-                      <motion.h3 
+                      <h3 
                         className="font-cinzel text-xl md:text-2xl font-semibold tracking-wide"
-                        animate={{
-                          x: hoveredIndex === index ? 4 : 0
-                        }}
-                        transition={{ duration: 0.3 }}
                         style={{
-                          background: hoveredIndex === index 
-                            ? 'linear-gradient(90deg, hsl(var(--ivory)) 0%, hsl(var(--blood-glow)) 100%)'
-                            : 'linear-gradient(90deg, hsl(var(--ivory)) 0%, hsl(var(--ivory) / 0.8) 100%)',
+                          background: 'linear-gradient(90deg, hsl(var(--ivory)) 0%, hsl(var(--ivory) / 0.8) 100%)',
                           WebkitBackgroundClip: 'text',
                           WebkitTextFillColor: 'transparent',
                           backgroundClip: 'text'
                         }}
                       >
                         {protocol.title}
-                      </motion.h3>
-                      <motion.span 
-                        className="px-3 py-1 text-[10px] md:text-xs font-orbitron tracking-wider border"
-                        animate={{
-                          backgroundColor: hoveredIndex === index ? 'hsl(var(--blood) / 0.15)' : 'hsl(var(--steel) / 0.1)',
-                          borderColor: hoveredIndex === index ? 'hsl(var(--blood) / 0.4)' : 'hsl(var(--steel) / 0.3)',
-                          color: hoveredIndex === index ? 'hsl(var(--blood))' : 'hsl(var(--steel))'
-                        }}
-                        transition={{ duration: 0.3 }}
-                      >
+                      </h3>
+                      <span className="px-3 py-1 bg-steel/10 text-[10px] md:text-xs font-orbitron text-steel tracking-wider border border-steel/30">
                         {protocol.context.toUpperCase()}
-                      </motion.span>
+                      </span>
                     </div>
                     
-                    <motion.p 
-                      className="font-rajdhani text-sm md:text-base leading-relaxed"
-                      animate={{
-                        color: hoveredIndex === index ? 'hsl(var(--foreground) / 0.85)' : 'hsl(var(--foreground) / 0.7)',
-                        x: hoveredIndex === index ? 4 : 0
-                      }}
-                      transition={{ duration: 0.3, delay: 0.05 }}
-                    >
+                    <p className="font-rajdhani text-sm md:text-base text-foreground/70 leading-relaxed">
                       {protocol.description}
-                    </motion.p>
+                    </p>
                   </div>
                 </div>
 
-                {/* Corner decorations with animation */}
-                <motion.div 
-                  className="absolute top-0 right-0 w-6 h-6 z-10"
-                  animate={{
-                    opacity: hoveredIndex === index ? 1 : 0.5
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-l from-blood/60 to-transparent" />
-                  <div className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-blood/60 to-transparent" />
-                </motion.div>
-                <motion.div 
-                  className="absolute bottom-0 right-0 w-6 h-6 z-10"
-                  animate={{
-                    opacity: hoveredIndex === index ? 1 : 0.5
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="absolute bottom-0 right-0 w-full h-px bg-gradient-to-l from-blood/60 to-transparent" />
-                  <div className="absolute bottom-0 right-0 w-px h-full bg-gradient-to-t from-blood/60 to-transparent" />
-                </motion.div>
-              </motion.div>
+                {/* Corner decorations */}
+                <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-steel/20 z-10" />
+                <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-steel/20 z-10" />
+              </div>
             </motion.div>
           ))}
         </div>
