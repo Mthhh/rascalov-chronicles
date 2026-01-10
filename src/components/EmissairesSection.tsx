@@ -37,59 +37,53 @@ const EmissairesSection = () => {
       ref={ref}
       className="relative min-h-screen py-32 px-6 overflow-hidden"
     >
-      {/* Background effect */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary blur-[100px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-blood-dark blur-[80px]" />
-      </div>
-
       <div className="max-w-6xl mx-auto relative">
-        {/* Section Header */}
+        {/* Section Header - Clean, sober */}
         <motion.div
           className="mb-16"
           initial={{ opacity: 0, x: -50 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-2 h-2 bg-primary rounded-full animate-pulse-glow" />
-            <span className="font-orbitron text-xs text-primary/60 tracking-[0.3em]">
+            <div className="w-1.5 h-1.5 bg-steel rounded-full" />
+            <span className="font-orbitron text-xs text-steel tracking-[0.3em]">
               DOSSIER III
             </span>
-            <div className="flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent" />
+            <div className="flex-1 h-px bg-gradient-to-r from-steel/30 to-transparent" />
           </div>
           
-          <h2 className="font-cinzel text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider">
-            <span className="text-foreground">LES</span>
+          <h2 className="font-cinzel text-4xl md:text-5xl lg:text-6xl font-medium tracking-wider">
+            <span className="text-ivory">LES</span>
             <span className="text-primary ml-4">ÉMISSAIRES</span>
           </h2>
           
-          <p className="mt-4 font-orbitron text-xs text-muted-foreground tracking-[0.2em]">
+          <p className="mt-4 font-orbitron text-xs text-steel tracking-[0.2em]">
             ЭМИССАРЫ — LES PERSONNAGES
           </p>
         </motion.div>
 
-        {/* Character Cards */}
+        {/* Character Cards - Clean dossier style */}
         <div className="grid lg:grid-cols-2 gap-8">
           {characters.map((char, index) => (
             <motion.div
               key={char.id}
               className="relative"
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 + index * 0.2 }}
+              transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
             >
-              {/* FSB-style dossier card */}
-              <div className="relative bg-card border border-border overflow-hidden group">
+              {/* Dossier card */}
+              <div className="relative bg-card/50 border border-steel/20 overflow-hidden">
                 {/* Top bar */}
-                <div className="flex items-center justify-between px-6 py-3 bg-primary/10 border-b border-border">
+                <div className="flex items-center justify-between px-6 py-3 bg-secondary/50 border-b border-steel/20">
                   <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 rounded-full bg-primary animate-pulse" />
-                    <span className="font-orbitron text-[10px] text-primary tracking-wider">
+                    <div className="w-2 h-2 rounded-full bg-steel" />
+                    <span className="font-orbitron text-[10px] text-steel tracking-wider">
                       ДОСЬЕ / DOSSIER
                     </span>
                   </div>
-                  <span className="font-orbitron text-[10px] text-muted-foreground">
+                  <span className="font-orbitron text-[10px] text-steel/60">
                     {char.clearance}
                   </span>
                 </div>
@@ -99,29 +93,27 @@ const EmissairesSection = () => {
                   <div className="flex gap-6 mb-6">
                     {/* Avatar placeholder */}
                     <div className="relative flex-shrink-0">
-                      <div className="w-24 h-32 bg-secondary border border-border flex items-center justify-center overflow-hidden">
-                        <char.icon className="w-12 h-12 text-primary/30" />
-                        {/* Scanline effect */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent animate-[pulse_3s_ease-in-out_infinite]" />
+                      <div className="w-24 h-32 bg-secondary/50 border border-steel/30 flex items-center justify-center overflow-hidden">
+                        <char.icon className="w-12 h-12 text-steel/40" />
                       </div>
-                      {/* Photo corner clips */}
-                      <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-primary" />
-                      <div className="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-primary" />
-                      <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-primary" />
-                      <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-primary" />
+                      {/* Photo corner clips - steel */}
+                      <div className="absolute -top-1 -left-1 w-3 h-3 border-t border-l border-steel/50" />
+                      <div className="absolute -top-1 -right-1 w-3 h-3 border-t border-r border-steel/50" />
+                      <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b border-l border-steel/50" />
+                      <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b border-r border-steel/50" />
                     </div>
 
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <User className="w-4 h-4 text-primary/60" />
-                        <span className="font-orbitron text-[10px] text-muted-foreground">
+                        <User className="w-4 h-4 text-steel/60" />
+                        <span className="font-orbitron text-[10px] text-steel">
                           ИДЕНТИФИКАЦИЯ
                         </span>
                       </div>
-                      <h3 className="font-cinzel text-xl text-foreground mb-1">
+                      <h3 className="font-cinzel text-xl text-ivory mb-1">
                         {char.name}
                       </h3>
-                      <span className="inline-block px-3 py-1 bg-primary/10 border border-primary/30 font-rajdhani text-sm text-primary">
+                      <span className="inline-block px-3 py-1 bg-steel/10 border border-steel/30 font-rajdhani text-sm text-steel">
                         {char.title}
                       </span>
                     </div>
@@ -130,58 +122,58 @@ const EmissairesSection = () => {
                   {/* Info fields */}
                   <div className="space-y-4">
                     <div>
-                      <label className="font-orbitron text-[10px] text-muted-foreground tracking-wider block mb-1">
+                      <label className="font-orbitron text-[10px] text-steel tracking-wider block mb-1">
                         RÔLE
                       </label>
-                      <p className="font-rajdhani text-foreground/80">
+                      <p className="font-rajdhani text-foreground/70">
                         {char.role}
                       </p>
                     </div>
 
                     <div>
-                      <label className="font-orbitron text-[10px] text-muted-foreground tracking-wider block mb-1">
+                      <label className="font-orbitron text-[10px] text-steel tracking-wider block mb-1">
                         SPÉCIALITÉ
                       </label>
-                      <p className="font-rajdhani text-foreground/80">
+                      <p className="font-rajdhani text-foreground/70">
                         {char.specialty}
                       </p>
                     </div>
 
-                    <div className="pt-4 border-t border-border/50">
-                      <label className="font-orbitron text-[10px] text-primary/60 tracking-wider block mb-2">
+                    <div className="pt-4 border-t border-steel/20">
+                      <label className="font-orbitron text-[10px] text-primary/80 tracking-wider block mb-2">
                         PHILOSOPHIE
                       </label>
-                      <p className="font-rajdhani text-primary italic">
+                      <p className="font-cormorant text-lg text-primary italic">
                         {char.philosophy}
                       </p>
                     </div>
                   </div>
 
                   {/* FSB Note */}
-                  <div className="mt-6 p-4 bg-primary/5 border border-primary/20 relative">
+                  <div className="mt-6 p-4 bg-secondary/30 border border-steel/20 relative">
                     <div className="flex items-center gap-2 mb-2">
-                      <Eye className="w-4 h-4 text-primary/60" />
-                      <span className="font-orbitron text-[10px] text-primary/60 tracking-wider">
+                      <Eye className="w-4 h-4 text-steel/60" />
+                      <span className="font-orbitron text-[10px] text-steel tracking-wider">
                         NOTE DU FSB
                       </span>
                     </div>
-                    <p className="font-rajdhani text-sm text-foreground/70">
+                    <p className="font-rajdhani text-sm text-foreground/60">
                       {char.fsbNote}
                     </p>
                     
-                    {/* Classified stamp */}
-                    <div className="absolute top-2 right-2 text-primary/20 font-orbitron text-[8px] tracking-widest rotate-12">
+                    {/* Classified stamp - subtle */}
+                    <div className="absolute top-2 right-2 text-steel/20 font-orbitron text-[8px] tracking-widest rotate-12">
                       СЕКРЕТНО
                     </div>
                   </div>
                 </div>
 
                 {/* Bottom bar */}
-                <div className="px-6 py-2 bg-secondary/50 border-t border-border flex justify-between items-center">
-                  <span className="font-orbitron text-[10px] text-muted-foreground">
+                <div className="px-6 py-2 bg-secondary/30 border-t border-steel/20 flex justify-between items-center">
+                  <span className="font-orbitron text-[10px] text-steel/60">
                     REF: RSC-{char.id.toUpperCase()}-001
                   </span>
-                  <span className="font-orbitron text-[10px] text-primary/60">
+                  <span className="font-orbitron text-[10px] text-steel/40">
                     RASCALOV СЕМЬЯ
                   </span>
                 </div>
