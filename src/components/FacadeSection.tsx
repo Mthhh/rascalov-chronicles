@@ -1,12 +1,14 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Building2, Truck, Package, FileText, ExternalLink } from 'lucide-react';
 
 import warehouseImage from '@/assets/facade-warehouse.jpg';
+import mmGlobalLogo from '@/assets/mm-global-logo.png';
 
 const FacadeSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
 
   const services = [
     {
@@ -112,14 +114,51 @@ const FacadeSection = () => {
 
             <div className="relative z-10 p-8 md:flex md:gap-12">
               {/* Logo/Icon area */}
-              <div className="flex-shrink-0 mb-6 md:mb-0">
-                <div className="w-32 h-32 bg-secondary/70 border border-steel/30 flex items-center justify-center backdrop-blur-sm group-hover:border-blood/30 transition-colors duration-300">
-                  <div className="text-center">
-                    <span className="font-cinzel text-2xl text-ivory block">MM</span>
-                    <span className="font-orbitron text-[10px] text-steel tracking-wider">GLOBAL</span>
-                  </div>
-                </div>
-              </div>
+              <motion.div 
+                className="flex-shrink-0 mb-6 md:mb-0 relative"
+                onMouseEnter={() => setIsLogoHovered(true)}
+                onMouseLeave={() => setIsLogoHovered(false)}
+              >
+                {/* Glow effect behind logo */}
+                <motion.div
+                  className="absolute inset-0 rounded-lg"
+                  animate={{
+                    boxShadow: isLogoHovered 
+                      ? '0 0 60px hsl(45 80% 50% / 0.4), 0 0 100px hsl(45 80% 50% / 0.2)' 
+                      : '0 0 30px hsl(45 80% 50% / 0.15), 0 0 60px hsl(45 80% 50% / 0.05)'
+                  }}
+                  transition={{ duration: 0.5 }}
+                />
+                
+                {/* Logo container */}
+                <motion.div 
+                  className="relative w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-background via-background/95 to-background/80 border border-gold-subtle/30 flex items-center justify-center backdrop-blur-sm overflow-hidden"
+                  animate={{
+                    borderColor: isLogoHovered ? 'hsl(45 80% 50% / 0.6)' : 'hsl(45 70% 40% / 0.3)'
+                  }}
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {/* Corner accents */}
+                  <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-gold-subtle/50" />
+                  <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-gold-subtle/50" />
+                  <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-gold-subtle/50" />
+                  <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-gold-subtle/50" />
+                  
+                  {/* Logo image */}
+                  <motion.img 
+                    src={mmGlobalLogo} 
+                    alt="MM Global Export"
+                    className="w-28 h-28 md:w-36 md:h-36 object-contain"
+                    animate={{
+                      filter: isLogoHovered 
+                        ? 'drop-shadow(0 0 20px hsl(45 80% 50% / 0.5))' 
+                        : 'drop-shadow(0 0 10px hsl(45 80% 50% / 0.2))'
+                    }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </motion.div>
+              </motion.div>
 
               {/* Content */}
               <div className="flex-1">
