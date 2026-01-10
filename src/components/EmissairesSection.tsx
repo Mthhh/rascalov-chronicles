@@ -3,6 +3,9 @@ import { useRef, useState } from 'react';
 import { User, Brain, Shield, Eye, MousePointer } from 'lucide-react';
 import CharacterModal from './CharacterModal';
 
+import azarovImage from '@/assets/character-azarov.jpg';
+import marcoImage from '@/assets/character-marco.jpg';
+
 const EmissairesSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -25,6 +28,7 @@ const EmissairesSection = () => {
       biography: 'Élevé dans l\'ombre de son grand-père Sergueï Zeitsey, Azarov a été formé dès l\'enfance aux subtilités du pouvoir. Diplômé en économie à l\'Université d\'État de Moscou, il a passé 5 ans à Londres où il a établi des contacts dans la finance internationale. Son retour en Russie en 2018 a marqué le début de la modernisation des opérations familiales. Après la purge de 2023, il a été désigné pour mener l\'Opération Sokol à Los Santos.',
       traits: ['Calculateur', 'Patient', 'Charismatique', 'Impitoyable', 'Visionnaire', 'Polyglotte'],
       sokolRole: 'Commandant en chef de l\'Opération Sokol. Responsable de toutes les décisions stratégiques, des alliances et de l\'expansion territoriale. Supervise directement les négociations avec les acteurs locaux et gère le portefeuille d\'investissements de la famille à Los Santos.',
+      image: azarovImage,
     },
     {
       id: 'marco',
@@ -42,6 +46,7 @@ const EmissairesSection = () => {
       biography: 'Issu d\'une famille militaire, Marco a intégré les forces spéciales à 19 ans. Ses états de service incluent des opérations en Tchétchénie, en Géorgie et en Syrie. Après un incident classifié qui a causé sa radiation, il a été approché par la famille Rascalov qui lui a offert un nouveau but. Depuis 7 ans, il sert comme garde du corps personnel d\'Azarov et comme "solutionneur de problèmes" pour l\'organisation.',
       traits: ['Loyal', 'Méthodique', 'Silencieux', 'Létal', 'Observateur', 'Stoïque'],
       sokolRole: 'Chef de la sécurité de l\'Opération Sokol. Responsable de la protection d\'Azarov, de la sécurisation des infrastructures et de la "gestion" des éléments hostiles. Supervise le recrutement et la formation des nouveaux membres.',
+      image: marcoImage,
     },
   ];
 
@@ -122,10 +127,18 @@ const EmissairesSection = () => {
                 <div className="relative z-10 p-6">
                   {/* Profile header */}
                   <div className="flex gap-6 mb-6">
-                    {/* Avatar placeholder */}
+                    {/* Character Photo */}
                     <div className="relative flex-shrink-0">
-                      <div className="w-24 h-32 bg-secondary/50 border border-steel/30 flex items-center justify-center overflow-hidden group-hover:border-blood/40 transition-colors">
-                        <char.icon className="w-12 h-12 text-steel/40 group-hover:text-blood/40 transition-colors" />
+                      <div className="w-24 h-32 bg-secondary/50 border border-steel/30 overflow-hidden group-hover:border-blood/40 transition-colors">
+                        <motion.img 
+                          src={char.image} 
+                          alt={char.name}
+                          className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                          initial={{ scale: 1 }}
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.5 }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent opacity-50" />
                       </div>
                       {/* Photo corner clips */}
                       <div className="absolute -top-1 -left-1 w-3 h-3 border-t border-l border-steel/50 group-hover:border-blood/50 transition-colors" />

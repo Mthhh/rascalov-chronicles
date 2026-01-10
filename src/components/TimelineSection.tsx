@@ -1,10 +1,16 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { MapPin, Anchor, Target } from 'lucide-react';
+
+// Import images
+import timeline1991 from '@/assets/timeline-1991.jpg';
+import timeline2010 from '@/assets/timeline-2010.jpg';
+import timeline2024 from '@/assets/timeline-2024.jpg';
 
 const TimelineSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [hoveredEvent, setHoveredEvent] = useState<string | null>(null);
 
   const events = [
     {
@@ -15,6 +21,7 @@ const TimelineSection = () => {
       description: 'Dans le chaos de l\'après-URSS, Sergueï Zeitsey rassemble d\'anciens officiers du KGB et des vétérans d\'Afghanistan. La Rascalov naît dans l\'ombre des chantiers navals, contrôlant les premiers flux de contrebande vers la Finlande.',
       icon: MapPin,
       russian: 'ОСНОВАНИЕ',
+      image: timeline1991,
     },
     {
       year: '2010',
@@ -24,6 +31,7 @@ const TimelineSection = () => {
       description: 'Prise de contrôle totale des routes maritimes entre Kaliningrad, Riga et Stockholm. La famille devient incontournable pour tout transit illégal en Europe du Nord. Partenariats secrets avec des cartels sud-américains.',
       icon: Anchor,
       russian: 'БАЛТИЙСКАЯ ЭКСПАНСИЯ',
+      image: timeline2010,
     },
     {
       year: '2024',
@@ -33,6 +41,7 @@ const TimelineSection = () => {
       description: 'Déploiement de la cellule d\'élite menée par Azarov Zeitsey. Objectif : établir une infrastructure logistique complète sur la côte ouest américaine. MM Global Export sert de façade légale pour les opérations.',
       icon: Target,
       russian: 'ОПЕРАЦИЯ СОКОЛ',
+      image: timeline2024,
       current: true,
     },
   ];
@@ -99,66 +108,93 @@ const TimelineSection = () => {
               </div>
 
               {/* Content card */}
-              <div className={`ml-16 md:ml-0 md:w-[calc(50%-3rem)] ${
-                index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left'
-              }`}>
-                <div className={`relative bg-card/40 border border-steel/20 p-6 ${
+              <div 
+                className={`ml-16 md:ml-0 md:w-[calc(50%-3rem)] ${
+                  index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left'
+                }`}
+                onMouseEnter={() => setHoveredEvent(event.year)}
+                onMouseLeave={() => setHoveredEvent(null)}
+              >
+                <div className={`relative bg-card/40 border border-steel/20 overflow-hidden group ${
                   event.current ? 'border-blood/30' : ''
-                }`}>
-                  {/* Year badge */}
-                  <div className={`absolute -top-3 ${
-                    index % 2 === 0 ? 'md:right-6' : 'left-6'
-                  } left-6`}>
-                    <span className={`inline-block px-3 py-1 font-orbitron text-sm tracking-wider ${
-                      event.current 
-                        ? 'bg-blood text-ivory' 
-                        : 'bg-steel/20 text-steel border border-steel/30'
-                    }`}>
-                      {event.year}
-                    </span>
+                } hover:border-steel/40 transition-all duration-500`}>
+                  
+                  {/* Background Image with hover effect */}
+                  <div className="absolute inset-0 overflow-hidden">
+                    <motion.div
+                      className="absolute inset-0"
+                      initial={{ scale: 1.1 }}
+                      animate={{ 
+                        scale: hoveredEvent === event.year ? 1.15 : 1.1,
+                        opacity: hoveredEvent === event.year ? 0.3 : 0.15
+                      }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
+                    >
+                      <img 
+                        src={event.image} 
+                        alt={event.title}
+                        className="w-full h-full object-cover filter grayscale"
+                      />
+                    </motion.div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
                   </div>
 
-                  {/* Icon */}
-                  <div className={`flex ${index % 2 === 0 ? 'md:justify-end' : 'justify-start'} mb-4 mt-2`}>
-                    <div className={`w-10 h-10 border flex items-center justify-center ${
-                      event.current ? 'border-blood/50' : 'border-steel/30'
+                  <div className="relative z-10 p-6">
+                    {/* Year badge */}
+                    <div className={`absolute -top-3 ${
+                      index % 2 === 0 ? 'md:right-6' : 'left-6'
+                    } left-6`}>
+                      <span className={`inline-block px-3 py-1 font-orbitron text-sm tracking-wider ${
+                        event.current 
+                          ? 'bg-blood text-ivory' 
+                          : 'bg-steel/20 text-steel border border-steel/30'
+                      }`}>
+                        {event.year}
+                      </span>
+                    </div>
+
+                    {/* Icon */}
+                    <div className={`flex ${index % 2 === 0 ? 'md:justify-end' : 'justify-start'} mb-4 mt-2`}>
+                      <div className={`w-10 h-10 border flex items-center justify-center backdrop-blur-sm ${
+                        event.current ? 'border-blood/50 bg-blood/10' : 'border-steel/30 bg-steel/10'
+                      }`}>
+                        <event.icon className={`w-5 h-5 ${event.current ? 'text-blood' : 'text-steel'}`} />
+                      </div>
+                    </div>
+
+                    {/* Location */}
+                    <span className="font-orbitron text-[10px] text-steel tracking-[0.2em] block mb-2">
+                      📍 {event.location.toUpperCase()}
+                    </span>
+
+                    {/* Title */}
+                    <h3 className="font-cinzel text-xl text-ivory mb-1">
+                      {event.title}
+                    </h3>
+                    <span className="font-rajdhani text-sm text-primary block mb-3">
+                      {event.subtitle}
+                    </span>
+
+                    {/* Description */}
+                    <p className="font-rajdhani text-foreground/70 leading-relaxed text-left">
+                      {event.description}
+                    </p>
+
+                    {/* Russian label */}
+                    <div className={`mt-4 pt-3 border-t border-steel/20 ${
+                      index % 2 === 0 ? 'md:text-right' : 'text-left'
                     }`}>
-                      <event.icon className={`w-5 h-5 ${event.current ? 'text-blood' : 'text-steel'}`} />
+                      <span className="font-orbitron text-[10px] text-steel/50 tracking-wider">
+                        {event.russian}
+                      </span>
                     </div>
                   </div>
 
-                  {/* Location */}
-                  <span className="font-orbitron text-[10px] text-steel tracking-[0.2em] block mb-2">
-                    📍 {event.location.toUpperCase()}
-                  </span>
-
-                  {/* Title */}
-                  <h3 className="font-cinzel text-xl text-ivory mb-1">
-                    {event.title}
-                  </h3>
-                  <span className="font-rajdhani text-sm text-primary block mb-3">
-                    {event.subtitle}
-                  </span>
-
-                  {/* Description */}
-                  <p className={`font-rajdhani text-foreground/60 leading-relaxed text-left`}>
-                    {event.description}
-                  </p>
-
-                  {/* Russian label */}
-                  <div className={`mt-4 pt-3 border-t border-steel/20 ${
-                    index % 2 === 0 ? 'md:text-right' : 'text-left'
-                  }`}>
-                    <span className="font-orbitron text-[10px] text-steel/50 tracking-wider">
-                      {event.russian}
-                    </span>
-                  </div>
-
                   {/* Corner decorations */}
-                  <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-steel/30" />
-                  <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-steel/30" />
-                  <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-steel/30" />
-                  <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-steel/30" />
+                  <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-steel/30 z-10" />
+                  <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-steel/30 z-10" />
+                  <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-steel/30 z-10" />
+                  <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-steel/30 z-10" />
                 </div>
               </div>
 
