@@ -1,10 +1,15 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+
+// Import images
+import heritageOrigin from '@/assets/heritage-origin.jpg';
+import heritageExpansion from '@/assets/heritage-expansion.jpg';
 
 const HeritageSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   return (
     <section
@@ -68,66 +73,108 @@ const HeritageSection = () => {
         <div className="grid md:grid-cols-2 gap-8">
           {/* Origin Card */}
           <motion.div
-            className="relative bg-card/30 border border-steel/20 p-8 backdrop-blur-sm"
+            className="relative bg-card/30 border border-steel/20 backdrop-blur-sm overflow-hidden group"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
+            onMouseEnter={() => setHoveredCard('origin')}
+            onMouseLeave={() => setHoveredCard(null)}
           >
-            {/* Corner decorations - steel */}
-            <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-steel/40" />
-            <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-steel/40" />
-            <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-steel/40" />
-            <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-steel/40" />
+            {/* Background Image */}
+            <motion.div 
+              className="absolute inset-0"
+              animate={{ 
+                scale: hoveredCard === 'origin' ? 1.1 : 1.05,
+                opacity: hoveredCard === 'origin' ? 0.4 : 0.25
+              }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <img 
+                src={heritageOrigin} 
+                alt="Saint-Pétersbourg"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
+            </motion.div>
 
-            <div className="flex items-center gap-3 mb-6">
-              <span className="font-orbitron text-xs text-steel tracking-wider">01</span>
-              <h3 className="font-cormorant text-2xl text-ivory">LES ORIGINES</h3>
-            </div>
+            <div className="relative z-10 p-8">
+              {/* Corner decorations - steel */}
+              <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-steel/40" />
+              <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-steel/40" />
+              <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-steel/40" />
+              <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-steel/40" />
 
-            <p className="font-rajdhani text-foreground/70 leading-relaxed">
-              La Rascalov n'est pas née dans le luxe, mais dans le froid des chantiers navals 
-              de <span className="text-ivory">Saint-Pétersbourg</span> à la fin des années 80. 
-              Sous l'impulsion de <span className="text-primary font-semibold">Sergueï Zeitsey</span>, 
-              l'organisation a compris une vérité fondamentale : la puissance ne réside pas dans 
-              le produit, mais dans le chemin qu'il parcourt.
-            </p>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="font-orbitron text-xs text-steel tracking-wider">01</span>
+                <h3 className="font-cormorant text-2xl text-ivory">LES ORIGINES</h3>
+              </div>
 
-            <div className="mt-6 pt-4 border-t border-steel/20">
-              <span className="font-orbitron text-[10px] text-steel tracking-wider">
-                САНКТ-ПЕТЕРБУРГ, 1987
-              </span>
+              <p className="font-rajdhani text-foreground/70 leading-relaxed">
+                La Rascalov n'est pas née dans le luxe, mais dans le froid des chantiers navals 
+                de <span className="text-ivory">Saint-Pétersbourg</span> à la fin des années 80. 
+                Sous l'impulsion de <span className="text-primary font-semibold">Sergueï Zeitsey</span>, 
+                l'organisation a compris une vérité fondamentale : la puissance ne réside pas dans 
+                le produit, mais dans le chemin qu'il parcourt.
+              </p>
+
+              <div className="mt-6 pt-4 border-t border-steel/20">
+                <span className="font-orbitron text-[10px] text-steel tracking-wider">
+                  САНКТ-ПЕТЕРБУРГ, 1987
+                </span>
+              </div>
             </div>
           </motion.div>
 
           {/* Expansion Card */}
           <motion.div
-            className="relative bg-card/30 border border-steel/20 p-8 backdrop-blur-sm"
+            className="relative bg-card/30 border border-steel/20 backdrop-blur-sm overflow-hidden group"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.6 }}
+            onMouseEnter={() => setHoveredCard('expansion')}
+            onMouseLeave={() => setHoveredCard(null)}
           >
-            <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-steel/40" />
-            <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-steel/40" />
-            <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-steel/40" />
-            <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-steel/40" />
+            {/* Background Image */}
+            <motion.div 
+              className="absolute inset-0"
+              animate={{ 
+                scale: hoveredCard === 'expansion' ? 1.1 : 1.05,
+                opacity: hoveredCard === 'expansion' ? 0.4 : 0.25
+              }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <img 
+                src={heritageExpansion} 
+                alt="Los Santos"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
+            </motion.div>
 
-            <div className="flex items-center gap-3 mb-6">
-              <span className="font-orbitron text-xs text-steel tracking-wider">02</span>
-              <h3 className="font-cormorant text-2xl text-ivory">L'EXPANSION</h3>
-            </div>
+            <div className="relative z-10 p-8">
+              <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-steel/40" />
+              <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-steel/40" />
+              <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-steel/40" />
+              <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-steel/40" />
 
-            <p className="font-rajdhani text-foreground/70 leading-relaxed">
-              Après avoir verrouillé les flux de la <span className="text-ivory">Baltique</span> et 
-              infiltré les sphères financières d'Europe de l'Est, une purge politique interne a 
-              forcé la famille à déplacer ses pions. La direction a choisi 
-              <span className="text-primary font-semibold"> Los Santos</span> non pas comme une 
-              terre d'exil, mais comme un <span className="text-ivory">carrefour stratégique vierge</span>.
-            </p>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="font-orbitron text-xs text-steel tracking-wider">02</span>
+                <h3 className="font-cormorant text-2xl text-ivory">L'EXPANSION</h3>
+              </div>
 
-            <div className="mt-6 pt-4 border-t border-steel/20">
-              <span className="font-orbitron text-[10px] text-steel tracking-wider">
-                ЛОС-САНТОС, НАСТОЯЩЕЕ
-              </span>
+              <p className="font-rajdhani text-foreground/70 leading-relaxed">
+                Après avoir verrouillé les flux de la <span className="text-ivory">Baltique</span> et 
+                infiltré les sphères financières d'Europe de l'Est, une purge politique interne a 
+                forcé la famille à déplacer ses pions. La direction a choisi 
+                <span className="text-primary font-semibold"> Los Santos</span> non pas comme une 
+                terre d'exil, mais comme un <span className="text-ivory">carrefour stratégique vierge</span>.
+              </p>
+
+              <div className="mt-6 pt-4 border-t border-steel/20">
+                <span className="font-orbitron text-[10px] text-steel tracking-wider">
+                  ЛОС-САНТОС, НАСТОЯЩЕЕ
+                </span>
+              </div>
             </div>
           </motion.div>
         </div>
