@@ -119,43 +119,26 @@ const FacadeSection = () => {
                 onMouseEnter={() => setIsLogoHovered(true)}
                 onMouseLeave={() => setIsLogoHovered(false)}
               >
-                {/* Glow effect behind logo */}
-                <motion.div
-                  className="absolute inset-0 rounded-lg"
-                  animate={{
-                    boxShadow: isLogoHovered 
-                      ? '0 0 60px hsl(45 80% 50% / 0.4), 0 0 100px hsl(45 80% 50% / 0.2)' 
-                      : '0 0 30px hsl(45 80% 50% / 0.15), 0 0 60px hsl(45 80% 50% / 0.05)'
-                  }}
-                  transition={{ duration: 0.5 }}
-                />
-                
                 {/* Logo container */}
                 <motion.div 
-                  className="relative w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-background via-background/95 to-background/80 border border-gold-subtle/30 flex items-center justify-center backdrop-blur-sm overflow-hidden"
+                  className="relative w-32 h-32 md:w-40 md:h-40 bg-background border border-steel/20 flex items-center justify-center backdrop-blur-sm overflow-hidden"
                   animate={{
-                    borderColor: isLogoHovered ? 'hsl(45 80% 50% / 0.6)' : 'hsl(45 70% 40% / 0.3)'
+                    borderColor: isLogoHovered ? 'hsl(var(--steel) / 0.4)' : 'hsl(var(--steel) / 0.2)'
                   }}
-                  whileHover={{ scale: 1.03 }}
+                  whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.4 }}
                 >
                   {/* Corner accents */}
-                  <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-gold-subtle/50" />
-                  <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-gold-subtle/50" />
-                  <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-gold-subtle/50" />
-                  <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-gold-subtle/50" />
+                  <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-steel/30" />
+                  <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-steel/30" />
+                  <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-steel/30" />
+                  <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-steel/30" />
                   
                   {/* Logo image */}
-                  <motion.img 
+                  <img 
                     src={mmGlobalLogo} 
                     alt="MM Global Export"
                     className="w-28 h-28 md:w-36 md:h-36 object-contain"
-                    animate={{
-                      filter: isLogoHovered 
-                        ? 'drop-shadow(0 0 20px hsl(45 80% 50% / 0.5))' 
-                        : 'drop-shadow(0 0 10px hsl(45 80% 50% / 0.2))'
-                    }}
-                    transition={{ duration: 0.4 }}
                   />
                 </motion.div>
               </motion.div>
