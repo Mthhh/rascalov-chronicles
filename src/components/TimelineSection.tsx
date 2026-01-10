@@ -46,7 +46,7 @@ const TimelineSection = () => {
       docDesc: 'Routes maritimes contrôlées',
     },
     {
-      year: '2024',
+      year: '2026',
       location: 'Los Santos',
       title: 'OPÉRATION SOKOL',
       subtitle: 'Déploiement Stratégique',
@@ -160,10 +160,13 @@ const TimelineSection = () => {
                       {/* Year badge */}
                       <span className={`inline-block px-3 py-1 font-orbitron text-sm tracking-wider ${
                         event.current 
-                          ? 'bg-blood text-ivory' 
+                          ? 'bg-blood text-ivory animate-pulse shadow-[0_0_15px_hsl(var(--blood)/0.6)]' 
                           : 'bg-steel/20 text-steel border border-steel/30'
                       }`}>
                         {event.year}
+                        {event.current && (
+                          <span className="ml-2 inline-block w-2 h-2 bg-ivory rounded-full animate-ping" />
+                        )}
                       </span>
 
                       {/* Icon */}
