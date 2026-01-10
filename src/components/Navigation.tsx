@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import wolfLogo from '@/assets/wolf-logo.png';
 
 interface NavItem {
   id: string;
@@ -65,17 +66,48 @@ const Navigation = () => {
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo with wolf */}
           <motion.div 
-            className="flex items-center gap-3"
+            className="flex items-center gap-3 cursor-pointer"
             whileHover={{ scale: 1.02 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <span className="font-cinzel text-xl font-bold text-ivory tracking-[0.2em]">
-              RASCALOV
-            </span>
-            <span className="text-xs text-steel font-orbitron">
-              СЕМЬЯ
-            </span>
+            {/* Animated Wolf Logo */}
+            <motion.div
+              className="relative"
+              animate={{
+                filter: [
+                  'drop-shadow(0 0 4px hsl(var(--blood) / 0.4))',
+                  'drop-shadow(0 0 8px hsl(var(--blood) / 0.6))',
+                  'drop-shadow(0 0 4px hsl(var(--blood) / 0.4))'
+                ]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              <motion.img
+                src={wolfLogo}
+                alt="Rascalov"
+                className="w-8 h-8 object-contain"
+                whileHover={{
+                  scale: 1.1,
+                  rotate: [0, -5, 5, 0],
+                  transition: { duration: 0.4 }
+                }}
+              />
+            </motion.div>
+            
+            <div className="flex flex-col">
+              <span className="font-cinzel text-lg font-bold text-ivory tracking-[0.2em] leading-none">
+                RASCALOV
+              </span>
+              <span className="text-[9px] text-steel font-orbitron tracking-[0.15em]">
+                СЕМЬЯ
+              </span>
+            </div>
           </motion.div>
 
           {/* Nav Links */}
