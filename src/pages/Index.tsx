@@ -29,8 +29,10 @@ const Index = () => {
 
       {/* Main Content */}
       <main>
-        <HeroSection onEnter={() => setHasEntered(true)} />
+        {/* Hero only shows before entering */}
+        {!hasEntered && <HeroSection onEnter={() => setHasEntered(true)} />}
         
+        {/* Content sections - shown after entering */}
         {hasEntered && (
           <>
             <HeritageSection />
