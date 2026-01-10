@@ -1,11 +1,13 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { Crown, Shield, Swords, Target, Users, LucideIcon } from 'lucide-react';
 
 interface RankItem {
   number: string;
   title: string;
   subtitle: string;
   description: string;
+  icon: LucideIcon;
 }
 
 const ranks: RankItem[] = [
@@ -13,31 +15,36 @@ const ranks: RankItem[] = [
     number: 'I',
     title: 'PAKHAN',
     subtitle: "CHEF DE L'ORGANISATION",
-    description: 'Il dirige la Rascalov, prend toutes les décisions majeures et veille à la stabilité du groupe.'
+    description: 'Il dirige la Rascalov, prend toutes les décisions majeures et veille à la stabilité du groupe.',
+    icon: Crown
   },
   {
     number: 'II',
     title: 'SOVETNIK',
     subtitle: 'BRAS DROIT',
-    description: "Conseiller et bras droit officiel du Pakhan. C'est la personne la plus proche du chef, chargée de relayer ses directives et de superviser les opérations importantes."
+    description: "Conseiller et bras droit officiel du Pakhan. C'est la personne la plus proche du chef, chargée de relayer ses directives et de superviser les opérations importantes.",
+    icon: Shield
   },
   {
     number: 'III',
     title: 'BRIGADIR',
     subtitle: "CHEF D'ÉQUIPE",
-    description: "Responsable d'un groupe ou d'une cellule d'opérations. Il coordonne les missions, encadre les membres et assure la discipline interne."
+    description: "Responsable d'un groupe ou d'une cellule d'opérations. Il coordonne les missions, encadre les membres et assure la discipline interne.",
+    icon: Swords
   },
   {
     number: 'IV',
     title: 'BOYEVIK',
     subtitle: 'SOLDAT CONFIRMÉ',
-    description: "Soldat confirmé. Exécutant expérimenté, chargé d'actions directes, de missions sensibles et de la protection des intérêts de l'organisation."
+    description: "Soldat confirmé. Exécutant expérimenté, chargé d'actions directes, de missions sensibles et de la protection des intérêts de l'organisation.",
+    icon: Target
   },
   {
     number: 'V',
     title: 'BRATOK',
     subtitle: 'MEMBRE',
-    description: "Membre à part entière. Fidèle à l'organisation, il participe activement aux activités quotidiennes et suit les ordres de ses supérieurs."
+    description: "Membre à part entière. Fidèle à l'organisation, il participe activement aux activités quotidiennes et suit les ordres de ses supérieurs.",
+    icon: Users
   }
 ];
 
@@ -131,11 +138,17 @@ const HierarchieSection = () => {
                   {/* Content */}
                   <div className="relative p-6 md:p-8">
                     <div className="flex items-start gap-6">
-                      {/* Roman numeral */}
-                      <div className="flex-shrink-0">
-                        <span className="font-cinzel text-2xl md:text-3xl text-primary/60 font-bold">
-                          {rank.number}
-                        </span>
+                      {/* Icon emblem */}
+                      <div className="flex-shrink-0 relative">
+                        <div className="w-14 h-14 md:w-16 md:h-16 border border-primary/30 rotate-45 flex items-center justify-center bg-background/60">
+                          <rank.icon className="w-6 h-6 md:w-7 md:h-7 text-primary -rotate-45" strokeWidth={1.5} />
+                        </div>
+                        {/* Roman numeral badge */}
+                        <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-background border border-primary/50 flex items-center justify-center">
+                          <span className="font-cinzel text-xs text-primary font-bold">
+                            {rank.number}
+                          </span>
+                        </div>
                       </div>
 
                       {/* Text content */}
