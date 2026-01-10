@@ -168,6 +168,29 @@
             drop-shadow(0 0 30px hsl(var(--blood) / 0.15));
   }
 
+  /* Wolf glow effect */
+  .wolf-glow {
+    filter: blur(60px);
+    background: radial-gradient(circle, hsl(var(--blood) / 0.4) 0%, transparent 70%);
+  }
+
+  /* Hero title - Premium metallic effect */
+  .hero-title {
+    background: linear-gradient(
+      180deg,
+      hsl(0 0% 100%) 0%,
+      hsl(var(--ivory)) 25%,
+      hsl(40 8% 70%) 50%,
+      hsl(220 15% 60%) 75%,
+      hsl(220 10% 45%) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    filter: drop-shadow(0 4px 8px hsl(0 0% 0% / 0.5));
+  }
+
   /* Metallic text effect - ivory based */
   .metallic-text {
     background: linear-gradient(
