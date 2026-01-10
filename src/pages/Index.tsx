@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import CustomCursor from '@/components/CustomCursor';
 import FilmGrain from '@/components/FilmGrain';
 import ParticleBackground from '@/components/ParticleBackground';
 import Navigation from '@/components/Navigation';
 import AudioPlayer from '@/components/AudioPlayer';
 import HeroSection from '@/components/HeroSection';
 import HeritageSection from '@/components/HeritageSection';
+import TimelineSection from '@/components/TimelineSection';
 import SokolSection from '@/components/SokolSection';
 import EmissairesSection from '@/components/EmissairesSection';
-import LoisSection from '@/components/LoisSection';
+import CommandementsSection from '@/components/CommandementsSection';
+import FacadeSection from '@/components/FacadeSection';
 import ProtocoleSection from '@/components/ProtocoleSection';
 
 const Index = () => {
@@ -62,9 +63,11 @@ const Index = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <HeritageSection />
+              <TimelineSection />
               <SokolSection />
               <EmissairesSection />
-              <LoisSection />
+              <CommandementsSection />
+              <FacadeSection />
               <ProtocoleSection />
             </motion.div>
           )}

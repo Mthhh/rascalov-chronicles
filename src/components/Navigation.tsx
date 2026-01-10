@@ -9,9 +9,11 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { id: 'heritage', label: 'HÉRITAGE', labelRu: 'НАСЛЕДИЕ' },
-  { id: 'sokol', label: 'PROJET SOKOL', labelRu: 'СОКОЛ' },
+  { id: 'timeline', label: 'DYNASTIE', labelRu: 'ДИНАСТИЯ' },
+  { id: 'sokol', label: 'SOKOL', labelRu: 'СОКОЛ' },
   { id: 'emissaires', label: 'ÉMISSAIRES', labelRu: 'АГЕНТЫ' },
-  { id: 'lois', label: 'LOIS DU SANG', labelRu: 'ЗАКОНЫ' },
+  { id: 'commandements', label: 'LOIS', labelRu: 'ЗАКОНЫ' },
+  { id: 'facade', label: 'FAÇADE', labelRu: 'ФАСАД' },
   { id: 'protocole', label: 'PROTOCOLE', labelRu: 'ПРОТОКОЛ' },
 ];
 
