@@ -8,7 +8,6 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { id: 'hero', label: 'ACCUEIL', labelRu: 'ГЛАВНАЯ' },
   { id: 'heritage', label: 'HÉRITAGE', labelRu: 'НАСЛЕДИЕ' },
   { id: 'sokol', label: 'PROJET SOKOL', labelRu: 'СОКОЛ' },
   { id: 'emissaires', label: 'ÉMISSAIRES', labelRu: 'АГЕНТЫ' },
@@ -17,7 +16,7 @@ const navItems: NavItem[] = [
 ];
 
 const Navigation = () => {
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState('heritage');
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -54,10 +53,10 @@ const Navigation = () => {
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: 1.5, duration: 0.8 }}
+      transition={{ delay: 0.5, duration: 0.8 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-background/90 backdrop-blur-md border-b border-border' 
+          ? 'bg-background/90 backdrop-blur-md border-b border-steel/20' 
           : 'bg-transparent'
       }`}
     >
@@ -66,12 +65,12 @@ const Navigation = () => {
           {/* Logo */}
           <motion.div 
             className="flex items-center gap-3"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.02 }}
           >
-            <span className="font-cinzel text-xl font-bold text-primary tracking-[0.2em]">
+            <span className="font-cinzel text-xl font-bold text-ivory tracking-[0.2em]">
               RASCALOV
             </span>
-            <span className="text-xs text-muted-foreground font-orbitron">
+            <span className="text-xs text-steel font-orbitron">
               СЕМЬЯ
             </span>
           </motion.div>
@@ -96,7 +95,7 @@ const Navigation = () => {
                 <motion.span
                   initial={{ opacity: 0, y: -5 }}
                   whileHover={{ opacity: 1, y: 0 }}
-                  className="absolute left-1/2 -translate-x-1/2 top-full text-[10px] text-primary/60 font-orbitron"
+                  className="absolute left-1/2 -translate-x-1/2 top-full text-[10px] text-steel font-orbitron"
                 >
                   {item.labelRu}
                 </motion.span>
@@ -106,19 +105,18 @@ const Navigation = () => {
                   <motion.div
                     layoutId="activeNav"
                     className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
-                    style={{ boxShadow: '0 0 10px hsl(var(--blood))' }}
                   />
                 )}
 
                 {/* Hover line */}
-                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform" />
+                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-steel/30 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform" />
               </button>
             ))}
           </div>
 
           {/* Classified stamp */}
           <div className="hidden lg:block">
-            <span className="text-[10px] font-orbitron text-primary/40 tracking-[0.3em] border border-primary/20 px-3 py-1">
+            <span className="text-[10px] font-orbitron text-steel/60 tracking-[0.3em] border border-steel/20 px-3 py-1">
               СЕКРЕТНО
             </span>
           </div>

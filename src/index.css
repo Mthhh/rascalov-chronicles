@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    /* RASCALOV Dark Theme - Blood & Shadow */
+    /* RASCALOV Dark Theme - Refined Palette */
     --background: 0 0% 3%;
     --foreground: 0 0% 92%;
 
@@ -16,43 +16,48 @@
     --popover: 0 0% 6%;
     --popover-foreground: 0 0% 92%;
 
-    --primary: 0 85% 35%;
+    /* Red as accent only */
+    --primary: 0 75% 40%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 0 0% 12%;
+    --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 92%;
 
     --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 55%;
+    --muted-foreground: 0 0% 50%;
 
-    --accent: 0 75% 25%;
+    --accent: 0 65% 30%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 18%;
-    --input: 0 0% 18%;
-    --ring: 0 85% 35%;
+    --border: 220 10% 18%;
+    --input: 220 10% 18%;
+    --ring: 0 75% 40%;
 
     --radius: 0.25rem;
 
-    /* Custom RASCALOV tokens */
-    --blood: 0 85% 35%;
-    --blood-dark: 0 85% 20%;
-    --blood-glow: 0 100% 50%;
+    /* Custom RASCALOV tokens - Refined */
+    --blood: 0 75% 40%;
+    --blood-dark: 0 70% 25%;
+    --blood-glow: 0 90% 55%;
     --shadow-deep: 0 0% 2%;
-    --ember: 15 100% 50%;
-    --gold: 45 90% 55%;
+    
+    /* New subtle colors */
+    --ivory: 40 15% 88%;
+    --steel: 220 12% 55%;
+    --slate-cold: 215 18% 40%;
+    --gold-subtle: 45 35% 45%;
 
     --sidebar-background: 0 0% 5%;
     --sidebar-foreground: 0 0% 92%;
-    --sidebar-primary: 0 85% 35%;
+    --sidebar-primary: 0 75% 40%;
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 0 0% 12%;
     --sidebar-accent-foreground: 0 0% 92%;
-    --sidebar-border: 0 0% 15%;
-    --sidebar-ring: 0 85% 35%;
+    --sidebar-border: 220 10% 15%;
+    --sidebar-ring: 0 75% 40%;
   }
 
   .dark {
@@ -62,19 +67,19 @@
     --card-foreground: 0 0% 92%;
     --popover: 0 0% 6%;
     --popover-foreground: 0 0% 92%;
-    --primary: 0 85% 35%;
+    --primary: 0 75% 40%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 12%;
+    --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 92%;
     --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 55%;
-    --accent: 0 75% 25%;
+    --muted-foreground: 0 0% 50%;
+    --accent: 0 65% 30%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 18%;
-    --input: 0 0% 18%;
-    --ring: 0 85% 35%;
+    --border: 220 10% 18%;
+    --input: 220 10% 18%;
+    --ring: 0 75% 40%;
   }
 }
 
@@ -99,7 +104,7 @@
 }
 
 @layer utilities {
-  /* Film grain overlay */
+  /* Film grain overlay - reduced intensity */
   .film-grain {
     position: fixed;
     top: 0;
@@ -108,9 +113,9 @@
     height: 100%;
     pointer-events: none;
     z-index: 9999;
-    opacity: 0.04;
+    opacity: 0.025;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    animation: grain 0.5s steps(10) infinite;
+    animation: grain 0.8s steps(10) infinite;
   }
 
   @keyframes grain {
@@ -126,71 +131,65 @@
     90% { transform: translate(1%, 1%); }
   }
 
-  /* Glitch text effect */
+  /* Glitch text effect - less frequent */
   .glitch-text {
     position: relative;
-    animation: glitch 3s infinite;
+    animation: glitch 5s infinite;
   }
 
   @keyframes glitch {
-    0%, 92%, 100% {
-      text-shadow: none;
-    }
-    93% {
-      text-shadow: 2px 0 hsl(var(--blood)), -2px 0 hsl(var(--blood-glow));
-    }
-    94% {
-      text-shadow: -2px 0 hsl(var(--blood)), 2px 0 hsl(var(--blood-glow));
-    }
-    95% {
+    0%, 95%, 100% {
       text-shadow: none;
     }
     96% {
-      text-shadow: 1px 0 hsl(var(--blood));
+      text-shadow: 1px 0 hsl(var(--blood)), -1px 0 hsl(var(--steel));
+    }
+    97% {
+      text-shadow: -1px 0 hsl(var(--blood)), 1px 0 hsl(var(--steel));
+    }
+    98% {
+      text-shadow: none;
     }
   }
 
   /* Breathing animation for wolf */
   .breathing {
-    animation: breathe 4s ease-in-out infinite;
+    animation: breathe 5s ease-in-out infinite;
   }
 
   @keyframes breathe {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02); }
+    50% { transform: scale(1.015); }
   }
 
-  /* Blood glow effect */
+  /* Blood glow effect - more subtle */
   .blood-glow {
-    filter: drop-shadow(0 0 20px hsl(var(--blood) / 0.5)) 
-            drop-shadow(0 0 40px hsl(var(--blood) / 0.3))
-            drop-shadow(0 0 60px hsl(var(--blood-dark) / 0.2));
+    filter: drop-shadow(0 0 15px hsl(var(--blood) / 0.3)) 
+            drop-shadow(0 0 30px hsl(var(--blood) / 0.15));
   }
 
-  /* Metallic text effect */
+  /* Metallic text effect - ivory based */
   .metallic-text {
     background: linear-gradient(
       180deg,
-      hsl(0 0% 80%) 0%,
-      hsl(0 0% 60%) 25%,
-      hsl(0 0% 40%) 50%,
-      hsl(0 5% 35%) 75%,
-      hsl(0 10% 25%) 100%
+      hsl(var(--ivory)) 0%,
+      hsl(40 10% 75%) 40%,
+      hsl(40 5% 60%) 60%,
+      hsl(220 10% 50%) 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 0 30px hsl(var(--blood) / 0.3);
   }
 
   /* Classified stamp effect */
   .classified-stamp {
-    border: 3px solid hsl(var(--blood));
+    border: 2px solid hsl(var(--steel));
     padding: 0.5rem 1.5rem;
     text-transform: uppercase;
     letter-spacing: 0.3em;
     transform: rotate(-5deg);
-    opacity: 0.8;
+    opacity: 0.6;
   }
 
   /* Terminal scanline effect */
@@ -205,25 +204,46 @@
       0deg,
       transparent,
       transparent 2px,
-      hsl(0 0% 0% / 0.03) 2px,
-      hsl(0 0% 0% / 0.03) 4px
+      hsl(0 0% 0% / 0.02) 2px,
+      hsl(0 0% 0% / 0.02) 4px
     );
     pointer-events: none;
   }
 
-  /* Red line accent */
-  .red-line::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, hsl(var(--blood)), transparent);
-    transition: width 0.3s ease;
+  /* Elegant serif for heritage/traditional sections */
+  .font-heritage {
+    font-family: 'Cormorant Garamond', serif;
   }
 
-  .red-line:hover::after {
-    width: 100%;
+  /* Technical font for strategic sections */
+  .font-tech {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  /* Text colors using new palette */
+  .text-ivory {
+    color: hsl(var(--ivory));
+  }
+
+  .text-steel {
+    color: hsl(var(--steel));
+  }
+
+  .text-slate-cold {
+    color: hsl(var(--slate-cold));
+  }
+
+  .text-gold-subtle {
+    color: hsl(var(--gold-subtle));
+  }
+
+  /* Border colors */
+  .border-steel {
+    border-color: hsl(var(--steel));
+  }
+
+  /* Background colors */
+  .bg-steel {
+    background-color: hsl(var(--steel));
   }
 }
