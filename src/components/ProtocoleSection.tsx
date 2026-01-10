@@ -1,10 +1,15 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Briefcase, Shield, Car } from 'lucide-react';
+
+import protocoleElegance from '@/assets/protocole-elegance.jpg';
+import protocoleTactical from '@/assets/protocole-tactical.jpg';
+import protocoleVehicle from '@/assets/protocole-vehicle.jpg';
 
 const ProtocoleSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const protocols = [
     {
@@ -12,18 +17,21 @@ const ProtocoleSection = () => {
       title: "L'ÉLÉGANCE FROIDE",
       context: "Public",
       description: "Manteaux longs, coupes sur mesure, tons anthracite. L'image d'hommes d'affaires russes intouchables. C'est notre armure sociale.",
+      image: protocoleElegance,
     },
     {
       icon: Shield,
       title: "LE BLOC TACTIQUE",
       context: "Opérationnel",
       description: "Pour le Projet Sokol, nous devenons invisibles. Tenues techniques noires, aucune marque distinctive. Si vous nous voyez, c'est que nous avons choisi d'être vus.",
+      image: protocoleTactical,
     },
     {
       icon: Car,
       title: "LA MOBILITÉ SOKOL",
       context: "Véhicules",
       description: "Le Brabus 4x4 Noir est notre standard. Un bloc de métal sombre qui impose le respect. Il n'est pas là pour la vitesse, mais pour la domination.",
+      image: protocoleVehicle,
     },
   ];
 
@@ -34,64 +42,139 @@ const ProtocoleSection = () => {
       className="relative min-h-screen py-32 px-6 overflow-hidden"
     >
       <div className="max-w-6xl mx-auto relative">
-        {/* Section Header - Corporate minimal */}
+        {/* Section Header */}
         <motion.div
           className="mb-16"
           initial={{ opacity: 0, x: -50 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-1.5 h-1.5 bg-steel rounded-full" />
-            <span className="font-orbitron text-xs text-steel tracking-[0.3em]">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="relative">
+              <div className="w-2.5 h-2.5 bg-blood rounded-full" />
+              <div className="absolute inset-0 w-2.5 h-2.5 bg-blood rounded-full animate-ping opacity-30" />
+            </div>
+            <span className="font-orbitron text-xs text-blood tracking-[0.4em] font-medium">
               DOSSIER V
             </span>
-            <div className="flex-1 h-px bg-gradient-to-r from-steel/30 to-transparent" />
+            <div className="flex-1 h-px bg-gradient-to-r from-blood/50 via-steel/20 to-transparent" />
           </div>
           
-          <h2 className="font-rajdhani text-3xl md:text-4xl lg:text-5xl font-semibold tracking-wider">
-            <span className="text-ivory">PROTOCOLE</span>
-            <span className="text-steel ml-4">OPÉRATIONNEL</span>
+          <h2 className="font-cinzel text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider">
+            <span 
+              style={{
+                background: 'linear-gradient(180deg, hsl(var(--ivory)) 0%, hsl(var(--ivory) / 0.7) 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                filter: 'drop-shadow(0 2px 10px hsl(0 0% 0% / 0.5))'
+              }}
+            >
+              PROTOCOLE
+            </span>
+            <span 
+              className="ml-3"
+              style={{
+                background: 'linear-gradient(180deg, hsl(var(--steel)) 0%, hsl(var(--steel) / 0.6) 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
+            >
+              OPÉRATIONNEL
+            </span>
           </h2>
           
-          <p className="mt-4 font-orbitron text-xs text-steel tracking-[0.2em]">
-            ОПЕРАТИВНЫЙ ПРОТОКОЛ — STYLE & VÉHICULES
+          <p className="mt-4 font-orbitron text-[10px] md:text-xs text-steel/70 tracking-[0.25em]">
+            ОПЕРАТИВНЫЙ ПРОТОКОЛ — <span className="text-blood/80">STYLE & VÉHICULES</span>
           </p>
         </motion.div>
 
-        {/* Protocol Cards - Clean, corporate */}
-        <div className="space-y-6">
+        {/* Protocol Cards with Images */}
+        <div className="space-y-8">
           {protocols.map((protocol, index) => (
             <motion.div
               key={protocol.title}
-              className="relative"
-              initial={{ opacity: 0, y: 20 }}
+              className="relative group"
+              initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
+              transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="flex flex-col md:flex-row gap-6 bg-card/30 border border-steel/20 p-6 hover:border-steel/30 transition-colors duration-300">
-                {/* Icon section */}
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 border border-steel/30 flex items-center justify-center">
-                    <protocol.icon className="w-8 h-8 text-steel" />
+              <div className="relative bg-background/40 border border-steel/20 overflow-hidden backdrop-blur-sm hover:border-steel/40 transition-all duration-500">
+                {/* Background Image */}
+                <motion.div 
+                  className="absolute inset-0 z-0"
+                  animate={{ 
+                    scale: hoveredIndex === index ? 1.05 : 1,
+                    opacity: hoveredIndex === index ? 0.35 : 0.2
+                  }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  <img 
+                    src={protocol.image} 
+                    alt={protocol.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/70" />
+                </motion.div>
+
+                {/* Left accent line */}
+                <motion.div 
+                  className="absolute left-0 top-0 bottom-0 w-1 bg-blood z-10"
+                  initial={{ scaleY: 0 }}
+                  animate={{ scaleY: hoveredIndex === index ? 1 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  style={{ originY: 0 }}
+                />
+
+                {/* Content */}
+                <div className="relative z-10 flex flex-col md:flex-row gap-6 p-6 md:p-8">
+                  {/* Icon section */}
+                  <div className="flex-shrink-0">
+                    <motion.div 
+                      className="w-16 h-16 md:w-20 md:h-20 border border-steel/30 flex items-center justify-center bg-background/60 backdrop-blur-sm"
+                      animate={{ 
+                        borderColor: hoveredIndex === index ? 'hsl(var(--blood) / 0.5)' : 'hsl(var(--steel) / 0.3)'
+                      }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <protocol.icon 
+                        className="w-8 h-8 md:w-10 md:h-10 transition-colors duration-300" 
+                        style={{ color: hoveredIndex === index ? 'hsl(var(--blood))' : 'hsl(var(--steel))' }}
+                      />
+                    </motion.div>
+                  </div>
+
+                  {/* Text Content */}
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-3 mb-4">
+                      <h3 
+                        className="font-cinzel text-xl md:text-2xl font-semibold tracking-wide"
+                        style={{
+                          background: 'linear-gradient(90deg, hsl(var(--ivory)) 0%, hsl(var(--ivory) / 0.8) 100%)',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text'
+                        }}
+                      >
+                        {protocol.title}
+                      </h3>
+                      <span className="px-3 py-1 bg-steel/10 text-[10px] md:text-xs font-orbitron text-steel tracking-wider border border-steel/30">
+                        {protocol.context.toUpperCase()}
+                      </span>
+                    </div>
+                    
+                    <p className="font-rajdhani text-sm md:text-base text-foreground/70 leading-relaxed">
+                      {protocol.description}
+                    </p>
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-3 mb-3">
-                    <h3 className="font-rajdhani text-xl font-semibold text-ivory">
-                      {protocol.title}
-                    </h3>
-                    <span className="px-3 py-1 bg-steel/10 text-xs font-orbitron text-steel tracking-wider border border-steel/20">
-                      {protocol.context.toUpperCase()}
-                    </span>
-                  </div>
-                  
-                  <p className="font-rajdhani text-foreground/60 leading-relaxed">
-                    {protocol.description}
-                  </p>
-                </div>
+                {/* Corner decorations */}
+                <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-steel/20 z-10" />
+                <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-steel/20 z-10" />
               </div>
             </motion.div>
           ))}
