@@ -8,19 +8,42 @@ const AudioPlayer = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
+  const targetVolume = 0.06; // Volume cible très faible (6%)
+  const fadeDuration = 3000; // Durée du fade-in en ms
+
+  const fadeInAudio = (audio: HTMLAudioElement) => {
+    audio.volume = 0;
+    const steps = 30;
+    const stepTime = fadeDuration / steps;
+    const volumeStep = targetVolume / steps;
+    let currentStep = 0;
+
+    const fadeInterval = setInterval(() => {
+      currentStep++;
+      audio.volume = Math.min(volumeStep * currentStep, targetVolume);
+      
+      if (currentStep >= steps) {
+        clearInterval(fadeInterval);
+      }
+    }, stepTime);
+  };
+
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.volume = 0.15; // Volume très faible pour l'ambiance
       audioRef.current.loop = true;
       
-      // Autoplay dès le chargement
+      // Autoplay avec fade-in progressif
       const playPromise = audioRef.current.play();
       if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Autoplay bloqué par le navigateur - on attend une interaction
-          setIsPlaying(false);
-          setIsMuted(true);
-        });
+        playPromise
+          .then(() => {
+            fadeInAudio(audioRef.current!);
+          })
+          .catch(() => {
+            // Autoplay bloqué par le navigateur
+            setIsPlaying(false);
+            setIsMuted(true);
+          });
       }
     }
   }, []);
