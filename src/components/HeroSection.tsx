@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { useEffect, useState, useRef, useMemo } from 'react';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import wolfLogo from '@/assets/wolf-logo.png';
 interface HeroSectionProps {
   onEnter: () => void;
@@ -8,7 +8,29 @@ const HeroSection = ({
   onEnter
 }: HeroSectionProps) => {
   const [isEntering, setIsEntering] = useState(false);
+  const [displayedText, setDisplayedText] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const fullText = useMemo(() => "Découvrez l'univers exclusif que nous avons créé pour votre communauté.", []);
+
+  // Typewriter effect
+  useEffect(() => {
+    if (displayedText.length < fullText.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText(fullText.slice(0, displayedText.length + 1));
+      }, 50);
+      return () => clearTimeout(timeout);
+    }
+  }, [displayedText, fullText]);
+
+  // Blinking cursor
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 530);
+    return () => clearInterval(interval);
+  }, []);
 
   // Mouse position for parallax
   const mouseX = useMotionValue(0);
@@ -146,7 +168,20 @@ const HeroSection = ({
             Entrer dans l'ombre
           </span>
         </div>
-      </motion.button>
+        </motion.button>
+
+        {/* Typewriter text for staff */}
+        <motion.div 
+          className="relative z-20 mt-8 max-w-md text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isEntering ? 0 : 1 }}
+          transition={{ duration: 0.6, delay: isEntering ? 0 : 2 }}
+        >
+          <p className="font-rajdhani text-xs tracking-[0.15em] text-ivory/40 leading-relaxed">
+            {displayedText}
+            <span className={`inline-block w-[2px] h-3 bg-blood/60 ml-0.5 align-middle ${showCursor ? 'opacity-100' : 'opacity-0'}`} />
+          </p>
+        </motion.div>
     </section>;
 };
 export default HeroSection;
