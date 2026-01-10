@@ -41,9 +41,8 @@ const HeroSection = ({ onEnter }: HeroSectionProps) => {
     setIsEntering(true);
     setTimeout(() => {
       onEnter();
-      // Instant scroll to top (heritage will be at top since hero is hidden)
       window.scrollTo(0, 0);
-    }, 600);
+    }, 800);
   };
 
   return (
@@ -64,6 +63,11 @@ const HeroSection = ({ onEnter }: HeroSectionProps) => {
         style={{
           background: 'radial-gradient(circle, hsl(var(--steel) / 0.3) 0%, transparent 70%)',
         }}
+        animate={{ 
+          opacity: isEntering ? 0 : 0.2,
+          scale: isEntering ? 1.5 : 1 
+        }}
+        transition={{ duration: 0.8 }}
       />
 
       {/* Wolf Logo */}
@@ -73,11 +77,12 @@ const HeroSection = ({ onEnter }: HeroSectionProps) => {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ 
           opacity: isEntering ? 0 : 1, 
-          scale: isEntering ? 1.5 : 1 
+          scale: isEntering ? 1.2 : 1,
+          y: isEntering ? -30 : 0
         }}
         transition={{ 
-          duration: isEntering ? 0.8 : 1.5, 
-          ease: isEntering ? 'easeIn' : 'easeOut' 
+          duration: isEntering ? 0.6 : 1.5, 
+          ease: "easeOut"
         }}
       >
         <motion.img
@@ -88,8 +93,8 @@ const HeroSection = ({ onEnter }: HeroSectionProps) => {
             filter: 'drop-shadow(0 0 30px hsl(var(--steel) / 0.3))'
           }}
           initial={{ filter: 'brightness(0)' }}
-          animate={{ filter: 'brightness(1)' }}
-          transition={{ duration: 2, delay: 0.5 }}
+          animate={{ filter: isEntering ? 'brightness(0)' : 'brightness(1)' }}
+          transition={{ duration: isEntering ? 0.5 : 2, delay: isEntering ? 0 : 0.5 }}
         />
       </motion.div>
 
@@ -99,9 +104,9 @@ const HeroSection = ({ onEnter }: HeroSectionProps) => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ 
           opacity: isEntering ? 0 : 1, 
-          y: isEntering ? -30 : 0 
+          y: isEntering ? -20 : 0 
         }}
-        transition={{ duration: 0.8, delay: 1 }}
+        transition={{ duration: 0.6, delay: isEntering ? 0 : 1 }}
       >
         <h1 className="font-cinzel text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-[0.15em] text-ivory">
           RASCALOV
@@ -109,9 +114,17 @@ const HeroSection = ({ onEnter }: HeroSectionProps) => {
         
         {/* Decorative lines */}
         <div className="flex items-center justify-center gap-4 mt-4">
-          <div className="w-20 md:w-32 h-px bg-gradient-to-r from-transparent to-steel/50" />
+          <motion.div 
+            className="w-20 md:w-32 h-px bg-gradient-to-r from-transparent to-steel/50"
+            animate={{ scaleX: isEntering ? 0 : 1 }}
+            transition={{ duration: 0.4 }}
+          />
           <span className="text-steel font-orbitron text-xs tracking-[0.3em]">СЕМЬЯ</span>
-          <div className="w-20 md:w-32 h-px bg-gradient-to-l from-transparent to-steel/50" />
+          <motion.div 
+            className="w-20 md:w-32 h-px bg-gradient-to-l from-transparent to-steel/50"
+            animate={{ scaleX: isEntering ? 0 : 1 }}
+            transition={{ duration: 0.4 }}
+          />
         </div>
       </motion.div>
 
@@ -122,7 +135,7 @@ const HeroSection = ({ onEnter }: HeroSectionProps) => {
         animate={{ 
           opacity: isEntering ? 0 : 1 
         }}
-        transition={{ duration: 0.8, delay: 1.5 }}
+        transition={{ duration: 0.5, delay: isEntering ? 0 : 1.5 }}
       >
         <span className="text-foreground/80">
           CEUX QUI NOUS DÉFIENT TOMBENT.
@@ -140,10 +153,10 @@ const HeroSection = ({ onEnter }: HeroSectionProps) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ 
           opacity: isEntering ? 0 : 1, 
-          y: 0,
-          scale: isEntering ? 0.9 : 1 
+          y: isEntering ? -10 : 0,
+          scale: isEntering ? 0.95 : 1 
         }}
-        transition={{ duration: 0.8, delay: 2 }}
+        transition={{ duration: 0.5, delay: isEntering ? 0 : 2 }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -162,16 +175,6 @@ const HeroSection = ({ onEnter }: HeroSectionProps) => {
           <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-steel/50 group-hover:border-primary transition-colors" />
         </div>
       </motion.button>
-
-      {/* Fade overlay for transition */}
-      {isEntering && (
-        <motion.div
-          className="absolute inset-0 bg-background z-50"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        />
-      )}
     </section>
   );
 };
