@@ -100,7 +100,7 @@ const ProtocoleSection = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
             >
-              <div className="relative bg-background/40 border border-steel/20 overflow-hidden backdrop-blur-sm">
+              <div className="relative bg-background/40 border border-steel/20 overflow-hidden backdrop-blur-sm transition-colors duration-300 hover:border-blood/40">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0 opacity-20">
                   <img 
