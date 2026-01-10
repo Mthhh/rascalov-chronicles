@@ -12,7 +12,6 @@ import {
   Skull, 
   Scale 
 } from 'lucide-react';
-import TypewriterNote from './TypewriterNote';
 
 const CommandementsSection = () => {
   const ref = useRef(null);
@@ -194,13 +193,18 @@ const CommandementsSection = () => {
         </motion.div>
 
         {/* Handwritten annotation */}
-        <TypewriterNote
-          lines={["Règle VII appliquée", "3 fois ce mois"]}
-          signature="- Rapport #47"
-          className="absolute -left-8 bottom-1/4"
-          rotation="rotate-6"
-          delay={1}
-        />
+        <motion.div
+          className="absolute -left-8 bottom-1/4 hidden lg:block"
+          initial={{ opacity: 0, rotate: 8 }}
+          animate={isInView ? { opacity: 0.6, rotate: 8 } : {}}
+          transition={{ duration: 0.8, delay: 1 }}
+        >
+          <div className="handwritten-note text-blood text-sm rotate-6">
+            Règle VII appliquée<br/>
+            3 fois ce mois<br/>
+            <span className="text-xs">- Rapport #47</span>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
