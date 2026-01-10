@@ -155,10 +155,9 @@ const TimelineSection = () => {
                   </div>
 
                   <div className="relative z-10 p-6">
-                    {/* Year badge */}
-                    <div className={`absolute -top-3 ${
-                      index % 2 === 0 ? 'md:right-6' : 'left-6'
-                    } left-6`}>
+                    {/* Header with Year badge and Icon */}
+                    <div className={`flex items-center justify-between mb-4`}>
+                      {/* Year badge */}
                       <span className={`inline-block px-3 py-1 font-orbitron text-sm tracking-wider ${
                         event.current 
                           ? 'bg-blood text-ivory' 
@@ -166,10 +165,8 @@ const TimelineSection = () => {
                       }`}>
                         {event.year}
                       </span>
-                    </div>
 
-                    {/* Icon */}
-                    <div className={`flex ${index % 2 === 0 ? 'md:justify-end' : 'justify-start'} mb-4 mt-2`}>
+                      {/* Icon */}
                       <div className={`w-10 h-10 border flex items-center justify-center backdrop-blur-sm ${
                         event.current ? 'border-blood/50 bg-blood/10' : 'border-steel/30 bg-steel/10'
                       }`}>
