@@ -49,11 +49,27 @@ const HeroSection = ({ onEnter }: HeroSectionProps) => {
       ref={containerRef}
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-background"
     >
+      {/* Noise/grain texture overlay */}
+      <div 
+        className="absolute inset-0 z-30 pointer-events-none opacity-[0.04]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      />
+
       {/* Subtle red ambient glow in background */}
       <div 
         className="absolute inset-0 z-0"
         style={{
-          background: 'radial-gradient(ellipse at center 40%, hsl(var(--blood) / 0.08) 0%, transparent 50%)',
+          background: 'radial-gradient(ellipse at center 35%, hsl(var(--blood) / 0.12) 0%, hsl(var(--blood) / 0.04) 30%, transparent 60%)',
+        }}
+      />
+
+      {/* Dark vignette */}
+      <div 
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at center, transparent 30%, hsl(var(--background)) 80%)',
         }}
       />
 
@@ -99,23 +115,23 @@ const HeroSection = ({ onEnter }: HeroSectionProps) => {
         RASCALOV
       </motion.h1>
 
-      {/* Slogan */}
+      {/* Slogan - Exact text from reference */}
       <motion.div 
         className="relative z-20 mt-8 text-center max-w-2xl px-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: isEntering ? 0 : 1 }}
         transition={{ duration: 0.6, delay: isEntering ? 0 : 1 }}
       >
-        <p className="font-rajdhani text-sm md:text-base tracking-[0.25em] text-ivory/70 uppercase leading-relaxed">
-          Ceux qui nous défient tombent. Ceux qui nous suivent vivent.
+        <p className="font-rajdhani text-sm md:text-base tracking-[0.2em] text-ivory/60 uppercase leading-loose">
+          Ceux qui nous défient tombent. Ceux<br className="hidden md:block" /> qui nous suivent vivent.
         </p>
       </motion.div>
 
       {/* Défiler text */}
       <motion.p
-        className="relative z-20 mt-6 font-rajdhani text-xs tracking-[0.3em] text-blood/80 uppercase"
+        className="relative z-20 mt-4 font-rajdhani text-[10px] tracking-[0.4em] text-blood/70 uppercase"
         initial={{ opacity: 0 }}
-        animate={{ opacity: isEntering ? 0 : 0.8 }}
+        animate={{ opacity: isEntering ? 0 : 0.7 }}
         transition={{ duration: 0.6, delay: isEntering ? 0 : 1.3 }}
       >
         Défiler
@@ -124,7 +140,7 @@ const HeroSection = ({ onEnter }: HeroSectionProps) => {
       {/* Enter Button */}
       <motion.button
         onClick={handleEnter}
-        className="relative z-20 mt-8 group"
+        className="relative z-20 mt-6 group"
         initial={{ opacity: 0, y: 15 }}
         animate={{ 
           opacity: isEntering ? 0 : 1, 
@@ -134,8 +150,8 @@ const HeroSection = ({ onEnter }: HeroSectionProps) => {
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
-        <div className="relative px-12 py-4 border border-blood/60 bg-blood/5 backdrop-blur-sm overflow-hidden transition-all duration-300 group-hover:border-blood group-hover:bg-blood/10">
-          <span className="relative font-rajdhani text-sm tracking-[0.25em] text-ivory/90 group-hover:text-ivory transition-colors uppercase">
+        <div className="relative px-14 py-4 border border-blood/50 bg-transparent overflow-hidden transition-all duration-300 group-hover:border-blood group-hover:bg-blood/10">
+          <span className="relative font-rajdhani text-sm tracking-[0.2em] text-ivory/80 group-hover:text-ivory transition-colors uppercase">
             Entrer dans l'ombre
           </span>
         </div>
