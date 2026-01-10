@@ -24,13 +24,13 @@ const TimelineSection = () => {
       location: 'Saint-Pétersbourg',
       title: 'FONDATION',
       subtitle: 'Le Noyau Original',
-      description: 'Dans le chaos de l\'après-URSS, Sergueï Zeitsey rassemble d\'anciens officiers du KGB et des vétérans d\'Afghanistan. La Rascalov naît dans l\'ombre des chantiers navals, contrôlant les premiers flux de contrebande vers la Finlande.',
+      description: 'Dans le chaos de l\'après-URSS, Sergueï Mikhailov rassemble d\'anciens officiers du KGB et des vétérans d\'Afghanistan. La Rascalov naît dans l\'ombre des chantiers navals, contrôlant les premiers flux de contrebande vers la Finlande.',
       icon: MapPin,
       russian: 'ОСНОВАНИЕ',
       image: timeline1991,
       document: document1991,
       docLabel: 'DOCUMENT DÉCLASSIFIÉ',
-      docDesc: 'Rapport KGB — Dossier Zeitsey',
+      docDesc: 'Rapport KGB — Dossier Mikhailov',
     },
     {
       year: '2010',
@@ -50,7 +50,7 @@ const TimelineSection = () => {
       location: 'Los Santos',
       title: 'OPÉRATION SOKOL',
       subtitle: 'Déploiement Stratégique',
-      description: 'Déploiement de la cellule d\'élite menée par Azarov Zeitsey. Objectif : établir une infrastructure logistique complète sur la côte ouest américaine. MM Global Export sert de façade légale pour les opérations.',
+      description: 'Déploiement de la cellule d\'élite menée par Mikhaïl Mikhailov. Objectif : établir une infrastructure logistique complète sur la côte ouest américaine. MM Global Export sert de façade légale pour les opérations.',
       icon: Target,
       russian: 'ОПЕРАЦИЯ СОКОЛ',
       image: timeline2024,
@@ -90,7 +90,7 @@ const TimelineSection = () => {
           
           <h2 className="font-cinzel text-4xl md:text-5xl font-medium tracking-wider">
             <span className="text-ivory">LA DYNASTIE</span>
-            <span className="text-primary ml-3">ZEITSEY</span>
+            <span className="text-primary ml-3">MIKHAILOV</span>
           </h2>
           
           <p className="mt-4 font-orbitron text-xs text-steel tracking-[0.2em]">
