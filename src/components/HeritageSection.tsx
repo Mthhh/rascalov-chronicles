@@ -129,7 +129,7 @@ const HeritageSection = () => {
             >
               <div className="absolute -top-3 left-6 text-5xl text-blood/30 font-serif">«</div>
               <p className="font-cormorant text-xl md:text-2xl lg:text-3xl text-ivory/80 italic leading-relaxed">
-                La Russie nous a donné la naissance, la survie nous a donné la discipline, 
+                La Russie nous a donné la naissance. La survie nous a donné la discipline.
                 <span 
                   className="not-italic font-semibold ml-1"
                   style={{
@@ -141,7 +141,7 @@ const HeritageSection = () => {
                     textDecorationColor: 'hsl(var(--blood) / 0.5)',
                     textUnderlineOffset: '4px'
                   }}
-                > Los Santos nous donnera le trône.</span>
+                > Los Santos nous donnera le droit de redevenir ce que nous étions.</span>
               </p>
               <div className="absolute -bottom-3 right-6 text-5xl text-blood/30 font-serif">»</div>
             </motion.blockquote>
@@ -217,11 +217,13 @@ const HeritageSection = () => {
                   </div>
 
                   <p className="font-rajdhani text-foreground/70 leading-relaxed text-sm md:text-base">
-                    La Rascalov n'est pas née dans le luxe, mais dans le froid des chantiers navals 
-                    de <span className="text-ivory font-medium">Saint-Pétersbourg</span> à la fin des années 80. 
-                    Sous l'impulsion de <span className="text-blood font-semibold underline decoration-blood/40 underline-offset-2">Sergueï Mikhailov</span>, 
-                    l'organisation a compris une vérité fondamentale : la puissance ne réside pas dans 
-                    le produit, mais dans le chemin qu'il parcourt.
+                    La Rascalov est née dans le froid et le silence des chantiers navals 
+                    de <span className="text-ivory font-medium">Saint-Pétersbourg</span>, fondée par 
+                    <span className="text-blood font-semibold underline decoration-blood/40 underline-offset-2"> Sergueï Mikhailov</span> dans 
+                    le chaos de l'après-URSS. Composée d'anciens officiers, de vétérans et d'hommes sans avenir, 
+                    elle a bâti sa puissance sur le contrôle invisible des flux logistiques de la 
+                    <span className="text-ivory font-medium">mer Baltique</span>. Mais suite à des pressions politiques 
+                    et des pertes stratégiques, la direction a pris une décision cruciale : envoyer une cellule à Los Santos.
                   </p>
 
                   <div className="mt-6 pt-4 border-t border-steel/15 flex items-center justify-between">
@@ -296,16 +298,17 @@ const HeritageSection = () => {
                         backgroundClip: 'text'
                       }}
                     >
-                      L'EXPANSION
+                      L'IMPLANTATION
                     </h3>
                   </div>
 
                   <p className="font-rajdhani text-foreground/70 leading-relaxed text-sm md:text-base">
-                    Après avoir verrouillé les flux de la <span className="text-ivory font-medium">Baltique</span> et 
-                    infiltré les sphères financières d'Europe de l'Est, une purge politique interne a 
-                    forcé la famille à déplacer ses pions. La direction a choisi
-                    <span className="text-blood font-semibold underline decoration-blood/40 underline-offset-2"> Los Santos</span> non pas comme une 
-                    terre d'exil, mais comme un <span className="text-ivory font-medium">carrefour stratégique vierge</span>.
+                    À leur arrivée à <span className="text-blood font-semibold underline decoration-blood/40 underline-offset-2">Los Santos</span>, 
+                    ils n'étaient rien. Pas de ressources, pas d'influence, pas de territoire. Pour survivre, 
+                    ils ont opéré dans l'ombre : petits braquages, vols ciblés, protection. Progressivement, 
+                    la cellule s'est structurée. Les opérations sont devenues plus propres, les décisions plus calculées. 
+                    Ce qui n'était qu'un groupe de survivants est devenu une organisation. Et avec elle, le premier pilier a émergé : 
+                    <span className="text-ivory font-medium">MM Global Export</span>.
                   </p>
 
                   <div className="mt-6 pt-4 border-t border-steel/15 flex items-center justify-between">
@@ -333,7 +336,7 @@ const HeritageSection = () => {
               </div>
 
               <p className="font-rajdhani text-base md:text-lg text-steel/70 tracking-wide">
-                Ici, la Rascalov ne vient pas pour s'adapter.
+                La Rascalov n'est pas encore pleinement implantée à Los Santos.
               </p>
               <p 
                 className="font-cinzel text-xl md:text-2xl lg:text-3xl mt-3 italic tracking-wider"
@@ -345,7 +348,7 @@ const HeritageSection = () => {
                   filter: 'drop-shadow(0 0 15px hsl(var(--blood) / 0.3))'
                 }}
               >
-                ELLE VIENT POUR IMPLANTER UN SYSTÈME.
+                ELLE EST EN TRAIN DE RENAÎTRE.
               </p>
             </motion.div>
           </div>

@@ -149,13 +149,18 @@ const FacadeSection = () => {
                   MM GLOBAL EXPORT
                 </h3>
                 <span className="font-rajdhani text-primary text-lg block mb-4">
-                  Pilier Logistique Officiel de la Famille
+                  Première Infrastructure Logistique de la Cellule
                 </span>
 
                 <p className="font-rajdhani text-foreground/70 leading-relaxed mb-6">
                   Cette entreprise de transit international constitue la <span className="text-ivory">couverture légale parfaite</span> pour 
                   l'ensemble des opérations logistiques de la Rascalov à Los Santos. Elle permet de justifier le transit de marchandises, 
                   le stockage en entrepôt sécurisé et la gestion d'une <span className="text-ivory">flotte complète de véhicules</span> à travers toute l'île.
+                </p>
+
+                <p className="font-rajdhani text-foreground/60 leading-relaxed mb-4">
+                  MM Global Export constitue la <span className="text-primary">première étape de l'implantation logistique</span> de la cellule 
+                  Rascalov à Los Santos et évoluera progressivement avec l'expansion de ses opérations.
                 </p>
 
                 <p className="font-rajdhani text-foreground/60 leading-relaxed mb-8">
