@@ -15,19 +15,19 @@ const ProtocoleSection = () => {
     icon: Briefcase,
     title: "L'ÉLÉGANCE FROIDE",
     context: "Public",
-    description: "Manteaux longs, coupes sur mesure, tons anthracite. L'image d'hommes d'affaires russes intouchables. C'est notre armure sociale.",
+    description: "On n'a pas encore les costumes sur mesure ni les manteaux longs. Mais on s'habille propre, sombre, sobre. Pas de logos, pas de couleurs de gang. On ressemble à des hommes d'affaires, pas à des voyous. C'est notre première armure.",
     image: protocoleElegance
   }, {
     icon: Shield,
     title: "LE BLOC TACTIQUE",
     context: "Opérationnel",
-    description: "Pour le Projet Sokol, nous devenons invisibles. Tenues techniques noires, aucune marque distinctive. Si vous nous voyez, c'est que nous avons choisi d'être vus.",
+    description: "Quand on bosse, on disparaît. Tenues sombres, visages couverts, aucune marque distinctive. On est un gang pour l'instant mais on opère déjà comme une unité. Si vous nous voyez, c'est qu'on l'a décidé.",
     image: protocoleTactical
   }, {
     icon: Car,
-    title: "LA MOBILITÉ SOKOL",
+    title: "LA MOBILITÉ",
     context: "Véhicules",
-    description: "Le Brabus 4x4 Noir est notre standard. Un bloc de métal sombre qui impose le respect. Il n'est pas là pour la vitesse, mais pour la domination.",
+    description: "Pas encore de Brabus blindé. On roule avec ce qu'on a, mais toujours sombre, toujours propre. Chaque véhicule est un outil, pas un jouet. La flotte viendra avec le temps, pour l'instant on fait avec et on fait bien.",
     image: protocoleVehicle
   }];
   return <section id="protocole" ref={ref} className="relative min-h-screen py-32 px-6 overflow-hidden">
