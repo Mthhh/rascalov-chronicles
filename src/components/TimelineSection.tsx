@@ -1,7 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { MapPin, Anchor, Target, Users, Building2 } from 'lucide-react';
-import SectionStatus from './SectionStatus';
 
 // Import images
 import timeline1991 from '@/assets/timeline-1991.jpg';
@@ -350,7 +349,6 @@ const TimelineSection = () => {
             </motion.div>
           ))}
         </div>
-        <SectionStatus text="STATUT : CHRONOLOGIE RECONSTITUÉE — PHASE GANG" delay={1} />
       </div>
     </section>
   );

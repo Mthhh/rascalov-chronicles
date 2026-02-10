@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import SectionStatus from './SectionStatus';
 
 // Import images
 import heritageOrigin from '@/assets/heritage-origin.jpg';
@@ -365,8 +364,6 @@ const HeritageSection = () => {
             </motion.div>
           </div>
         </motion.div>
-
-        <SectionStatus text="STATUT : ACTIF — PHASE GANG" delay={1.2} />
       </div>
     </section>
   );

@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Crown, Shield, Swords, Target, Users, LucideIcon } from 'lucide-react';
-import SectionStatus from './SectionStatus';
 
 interface RankItem {
   number: string;
@@ -276,8 +275,6 @@ const HierarchieSection = () => {
             <div className="w-12 h-px bg-gradient-to-l from-transparent to-steel/30" />
           </div>
         </motion.div>
-
-        <SectionStatus text="STATUT : HIÉRARCHIE ÉTABLIE — PHASE FAMILLE" delay={1} />
       </div>
     </section>
   );
