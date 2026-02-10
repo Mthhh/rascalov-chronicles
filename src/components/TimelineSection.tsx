@@ -56,7 +56,7 @@ const TimelineSection = () => {
       location: 'Los Santos',
       title: 'L\'ARRIVÉE',
       subtitle: 'Le Gang — Phase Initiale',
-      description: 'Une poignée d\'hommes débarque à Los Santos. Pas de ressources. Pas de contacts. Pas de territoire. Ils survivent comme un gang de rue : braquages, vols ciblés, protection. Mais contrairement aux autres, ils ne se cachent pas — ils se font remarquer. Pas comme des voyous, comme des hommes qu\'on n\'oublie pas.',
+      description: 'Une poignée d\'hommes débarque à Los Santos. Pas de ressources. Pas de contacts. Pas de territoire. Ils survivent comme un gang de rue : braquages, vols ciblés, protection. Mais contrairement aux autres, ils ne se cachent pas ils se font remarquer. Pas comme des voyous, comme des hommes qu\'on n\'oublie pas.',
       icon: Users,
       russian: 'ПРИБЫТИЕ',
       image: timeline2024Arrival,
