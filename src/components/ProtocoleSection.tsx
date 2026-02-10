@@ -1,6 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Briefcase, Shield, Car } from 'lucide-react';
+import SectionStatus from './SectionStatus';
 import protocoleElegance from '@/assets/protocole-elegance.jpg';
 import protocoleTactical from '@/assets/protocole-tactical.jpg';
 import protocoleVehicle from '@/assets/protocole-vehicle.jpg';
@@ -274,6 +275,8 @@ const ProtocoleSection = () => {
             </span>
           </div>
         </motion.footer>
+
+        <SectionStatus text="STATUT : PROTOCOLE ACTIF — PHASE FAMILLE" delay={1} />
       </div>
     </section>;
 };

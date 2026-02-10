@@ -1,6 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Building2, Truck, Package, FileText, ExternalLink } from 'lucide-react';
+import SectionStatus from './SectionStatus';
 import warehouseImage from '@/assets/facade-warehouse.jpg';
 import mmGlobalLogo from '@/assets/mm-global-logo.png';
 const FacadeSection = () => {
@@ -222,6 +223,8 @@ const FacadeSection = () => {
             <span className="text-xs">- Agent K.</span>
           </div>
         </motion.div>
+
+        <SectionStatus text="STATUT : FAÇADE OPÉRATIONNELLE — PHASE FAMILLE" delay={1} />
       </div>
     </section>;
 };

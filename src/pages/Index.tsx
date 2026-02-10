@@ -15,6 +15,8 @@ import CommandementsSection from '@/components/CommandementsSection';
 import ProtocoleSection from '@/components/ProtocoleSection';
 import LoadingScreen from '@/components/LoadingScreen';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
+import PhaseIndicator from '@/components/PhaseIndicator';
+import SectionReveal from '@/components/SectionReveal';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,6 +40,7 @@ const Index = () => {
 
       {/* Scroll Progress Bar - shows after entering */}
       {hasEntered && <ScrollProgressBar />}
+      {hasEntered && <PhaseIndicator />}
 
       {/* Navigation - shows after entering with fade */}
       <AnimatePresence>
@@ -78,14 +81,14 @@ const Index = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <HeritageSection />
-              <TimelineSection />
-              <SokolSection />
-              <FacadeSection />
-              <EmissairesSection />
-              <HierarchieSection />
-              <CommandementsSection />
-              <ProtocoleSection />
+              <SectionReveal><HeritageSection /></SectionReveal>
+              <SectionReveal><TimelineSection /></SectionReveal>
+              <SectionReveal><SokolSection /></SectionReveal>
+              <SectionReveal><FacadeSection /></SectionReveal>
+              <SectionReveal><EmissairesSection /></SectionReveal>
+              <SectionReveal><HierarchieSection /></SectionReveal>
+              <SectionReveal><CommandementsSection /></SectionReveal>
+              <SectionReveal><ProtocoleSection /></SectionReveal>
             </motion.div>
           )}
         </AnimatePresence>
