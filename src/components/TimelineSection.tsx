@@ -1,15 +1,19 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { MapPin, Anchor, Target } from 'lucide-react';
+import { MapPin, Anchor, Target, Users, Building2 } from 'lucide-react';
 
 // Import images
 import timeline1991 from '@/assets/timeline-1991.jpg';
 import timeline2010 from '@/assets/timeline-2010.jpg';
+import timeline2024Arrival from '@/assets/timeline-2024-arrival.jpg';
+import timeline2025Structure from '@/assets/timeline-2025-structure.jpg';
 import timeline2024 from '@/assets/timeline-2024.jpg';
 
 // Import supplementary documents
 import document1991 from '@/assets/document-1991.jpg';
 import mapBaltic from '@/assets/map-baltic.jpg';
+import docArrival from '@/assets/doc-arrival.jpg';
+import docStructure from '@/assets/doc-structure.jpg';
 import surveillance2024 from '@/assets/surveillance-2024.jpg';
 
 const TimelineSection = () => {
@@ -24,40 +28,71 @@ const TimelineSection = () => {
       location: 'Saint-Pétersbourg',
       title: 'FONDATION',
       subtitle: 'Le Noyau Original',
-      description: 'Dans le chaos de l\'après-URSS, Sergueï Mikhailov rassemble d\'anciens officiers du KGB et des vétérans d\'Afghanistan. La Rascalov naît dans l\'ombre des chantiers navals, contrôlant les premiers flux de contrebande vers la Finlande.',
+      description: 'Dans le chaos de l\'après-URSS, Sergueï Mikhailov rassemble d\'anciens officiers et des vétérans d\'Afghanistan. La Rascalov naît dans l\'ombre des chantiers navals, contrôlant les premiers flux de contrebande vers la Finlande.',
       icon: MapPin,
       russian: 'ОСНОВАНИЕ',
       image: timeline1991,
       document: document1991,
       docLabel: 'DOCUMENT DÉCLASSIFIÉ',
       docDesc: 'Rapport KGB — Dossier Mikhailov',
+      phase: 'ORIGINE',
     },
     {
       year: '2010',
       location: 'Mer Baltique',
-      title: 'L\'EXPANSION BALTIQUE',
-      subtitle: 'Domination Maritime',
-      description: 'Prise de contrôle totale des routes maritimes entre Kaliningrad, Riga et Stockholm. La famille devient incontournable pour tout transit illégal en Europe du Nord. Partenariats secrets avec des cartels sud-américains.',
+      title: 'DOMINATION BALTIQUE',
+      subtitle: 'L\'Apogée & La Chute',
+      description: 'Prise de contrôle totale des routes maritimes entre Kaliningrad, Riga et Stockholm. La Rascalov devient incontournable. Mais cette puissance attire l\'attention. Pressions politiques, traques, pertes stratégiques. La direction prend une décision : envoyer une cellule vers l\'ouest.',
       icon: Anchor,
       russian: 'БАЛТИЙСКАЯ ЭКСПАНСИЯ',
       image: timeline2010,
       document: mapBaltic,
       docLabel: 'CARTE OPÉRATIONNELLE',
       docDesc: 'Routes maritimes contrôlées',
+      phase: 'APOGÉE',
     },
     {
-      year: '2026',
+      year: '2024',
       location: 'Los Santos',
-      title: 'OPÉRATION SOKOL',
-      subtitle: 'Déploiement Stratégique',
-      description: 'Déploiement de la cellule d\'élite menée par Mikhaïl Mikhailov. Objectif : établir une infrastructure logistique complète sur la côte ouest américaine. MM Global Export sert de façade légale pour les opérations.',
+      title: 'L\'ARRIVÉE',
+      subtitle: 'Le Gang — Phase Initiale',
+      description: 'Une poignée d\'hommes débarque à Los Santos. Pas de ressources. Pas de contacts. Pas de territoire. Ils survivent comme un gang de rue : braquages, vols ciblés, protection. Personne ne sait qui ils sont. Personne ne les remarque. C\'est exactement le plan.',
+      icon: Users,
+      russian: 'ПРИБЫТИЕ',
+      image: timeline2024Arrival,
+      document: docArrival,
+      docLabel: 'SURVEILLANCE PORTUAIRE',
+      docDesc: 'Arrivée non-identifiée — Docks LS',
+      phase: 'GANG',
+    },
+    {
+      year: '2025',
+      location: 'Los Santos',
+      title: 'LA STRUCTURATION',
+      subtitle: 'La Famille — Phase Active',
+      description: 'Le gang devient une famille. Les opérations se professionnalisent. Une hiérarchie émerge. MM Global Export est fondée comme façade légale. Les premiers contacts stratégiques sont établis. Ce qui n\'était que des survivants devient une organisation avec des règles, des commandements, un code.',
+      icon: Building2,
+      russian: 'СТРУКТУРИЗАЦИЯ',
+      image: timeline2025Structure,
+      document: docStructure,
+      docLabel: 'DOSSIER INTERNE',
+      docDesc: 'Enregistrement MM Global Export',
+      phase: 'FAMILLE',
+      current: true,
+    },
+    {
+      year: '20XX',
+      location: 'Los Santos & Au-delà',
+      title: 'PROJET SOKOL',
+      subtitle: 'La Rascalov — Objectif Final',
+      description: 'L\'objectif ultime. Contrôle total des flux maritimes. Infrastructure logistique complète. Réseau d\'influence politique. La cellule ne sera plus une cellule — elle sera LA RASCALOV. Le Faucon prendra son envol.',
       icon: Target,
       russian: 'ОПЕРАЦИЯ СОКОЛ',
       image: timeline2024,
-      current: true,
       document: surveillance2024,
-      docLabel: 'SURVEILLANCE ACTIVE',
-      docDesc: 'Port de Los Santos — Live Feed',
+      docLabel: 'PROJECTION STRATÉGIQUE',
+      docDesc: 'Objectif final — Projet Sokol',
+      phase: 'RASCALOV',
     },
   ];
 
@@ -89,12 +124,12 @@ const TimelineSection = () => {
           </div>
           
           <h2 className="font-cinzel text-4xl md:text-5xl font-medium tracking-wider">
-            <span className="text-ivory">LA DYNASTIE</span>
-            <span className="text-primary ml-3">MIKHAILOV</span>
+            <span className="text-ivory">L'ÉVOLUTION</span>
+            <span className="text-primary ml-3">RASCALOV</span>
           </h2>
           
           <p className="mt-4 font-orbitron text-xs text-steel tracking-[0.2em]">
-            ДИНАСТИЯ — 33 ANS D'HISTOIRE
+            GANG → FAMILLE → ORGANISATION
           </p>
         </motion.div>
 
@@ -111,13 +146,15 @@ const TimelineSection = () => {
               }`}
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 + index * 0.2 }}
+              transition={{ duration: 0.8, delay: 0.2 + index * 0.15 }}
             >
               {/* Timeline node */}
               <div className="absolute left-8 md:left-1/2 -translate-x-1/2 z-10">
                 <div className={`w-4 h-4 rounded-full border-2 ${
                   event.current 
                     ? 'bg-blood border-blood shadow-[0_0_20px_hsl(var(--blood))]' 
+                    : event.phase === 'RASCALOV'
+                    ? 'bg-background border-primary/50'
                     : 'bg-background border-steel'
                 }`} />
               </div>
@@ -131,7 +168,7 @@ const TimelineSection = () => {
                 onMouseLeave={() => setHoveredEvent(null)}
               >
                 <div className={`relative bg-card/40 border border-steel/20 overflow-hidden group ${
-                  event.current ? 'border-blood/30' : ''
+                  event.current ? 'border-blood/30' : event.phase === 'RASCALOV' ? 'border-primary/20 border-dashed' : ''
                 } hover:border-steel/40 transition-all duration-500`}>
                   
                   {/* Background Image with hover effect */}
@@ -155,25 +192,44 @@ const TimelineSection = () => {
                   </div>
 
                   <div className="relative z-10 p-6">
-                    {/* Header with Year badge and Icon */}
-                    <div className={`flex items-center justify-between mb-4`}>
+                    {/* Header with Year badge, Phase tag and Icon */}
+                    <div className="flex items-center justify-between mb-4">
                       {/* Year badge */}
-                      <span className={`inline-block px-3 py-1 font-orbitron text-sm tracking-wider ${
-                        event.current 
-                          ? 'bg-blood text-ivory animate-pulse shadow-[0_0_15px_hsl(var(--blood)/0.6)]' 
-                          : 'bg-steel/20 text-steel border border-steel/30'
-                      }`}>
-                        {event.year}
-                        {event.current && (
-                          <span className="ml-2 inline-block w-2 h-2 bg-ivory rounded-full animate-ping" />
-                        )}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className={`inline-block px-3 py-1 font-orbitron text-sm tracking-wider ${
+                          event.current 
+                            ? 'bg-blood text-ivory shadow-[0_0_15px_hsl(var(--blood)/0.6)]' 
+                            : event.phase === 'RASCALOV'
+                            ? 'bg-primary/10 text-primary border border-primary/30'
+                            : 'bg-steel/20 text-steel border border-steel/30'
+                        }`}>
+                          {event.year}
+                          {event.current && (
+                            <span className="ml-2 inline-block w-2 h-2 bg-ivory rounded-full animate-ping" />
+                          )}
+                        </span>
+                        {/* Phase tag */}
+                        <span className={`font-orbitron text-[9px] tracking-[0.15em] px-2 py-0.5 ${
+                          event.phase === 'GANG' ? 'text-steel bg-steel/10 border border-steel/20' :
+                          event.phase === 'FAMILLE' ? 'text-blood bg-blood/10 border border-blood/20' :
+                          event.phase === 'RASCALOV' ? 'text-primary bg-primary/10 border border-primary/20' :
+                          'text-steel/60 bg-steel/5 border border-steel/10'
+                        }`}>
+                          {event.phase}
+                        </span>
+                      </div>
 
                       {/* Icon */}
                       <div className={`w-10 h-10 border flex items-center justify-center backdrop-blur-sm ${
-                        event.current ? 'border-blood/50 bg-blood/10' : 'border-steel/30 bg-steel/10'
+                        event.current ? 'border-blood/50 bg-blood/10' : 
+                        event.phase === 'RASCALOV' ? 'border-primary/30 bg-primary/10' :
+                        'border-steel/30 bg-steel/10'
                       }`}>
-                        <event.icon className={`w-5 h-5 ${event.current ? 'text-blood' : 'text-steel'}`} />
+                        <event.icon className={`w-5 h-5 ${
+                          event.current ? 'text-blood' : 
+                          event.phase === 'RASCALOV' ? 'text-primary' :
+                          'text-steel'
+                        }`} />
                       </div>
                     </div>
 
@@ -186,7 +242,12 @@ const TimelineSection = () => {
                     <h3 className="font-cinzel text-xl text-ivory mb-1">
                       {event.title}
                     </h3>
-                    <span className="font-rajdhani text-sm text-primary block mb-3">
+                    <span className={`font-rajdhani text-sm block mb-3 ${
+                      event.phase === 'GANG' ? 'text-steel' :
+                      event.phase === 'FAMILLE' ? 'text-blood' :
+                      event.phase === 'RASCALOV' ? 'text-primary' :
+                      'text-primary'
+                    }`}>
                       {event.subtitle}
                     </span>
 
@@ -220,7 +281,7 @@ const TimelineSection = () => {
                 }`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.4 + index * 0.2 }}
+                transition={{ duration: 0.8, delay: 0.4 + index * 0.15 }}
                 onMouseEnter={() => setHoveredDoc(event.year)}
                 onMouseLeave={() => setHoveredDoc(null)}
               >
@@ -279,7 +340,9 @@ const TimelineSection = () => {
                     <span className="text-primary/60">{">"}</span> 
                     {index === 0 && "Origine des fonds confirmée. Connexions FSB établies."}
                     {index === 1 && "Corridor sécurisé. 47 navires sous contrôle indirect."}
-                    {index === 2 && "Cibles identifiées. Infiltration en cours..."}
+                    {index === 2 && "Sujets non-identifiés. Activité mineure détectée."}
+                    {index === 3 && "Structure organisationnelle en formation. Façade légale active."}
+                    {index === 4 && "Projection stratégique. Objectif à long terme..."}
                   </motion.div>
                 </div>
               </motion.div>
