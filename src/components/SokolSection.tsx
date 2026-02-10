@@ -97,6 +97,10 @@ const SokolSection = () => {
             </span>
           </div>
           
+          <p className="font-rajdhani text-base md:text-lg text-center text-foreground/60 mb-4">
+            Le Projet Sokol est actuellement en phase d'implantation initiale. La cellule présente à Los Santos 
+            construit progressivement les fondations nécessaires à l'établissement complet de l'infrastructure Rascalov.
+          </p>
           <p className="font-rajdhani text-xl md:text-2xl text-center text-foreground/80">
             Alors que les gangs locaux se battent pour des coins de rue,
             <br />
