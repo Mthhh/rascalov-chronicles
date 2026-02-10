@@ -198,7 +198,7 @@ const ProtocoleSection = () => {
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
             }}>
-                Le chaos est une échelle.
+                On est arrivés avec rien.
               </p>
               <p className="font-cinzel text-2xl md:text-3xl lg:text-4xl leading-relaxed mt-2 max-w-3xl mx-auto" style={{
               background: 'linear-gradient(90deg, hsl(var(--blood-dark)) 0%, hsl(var(--blood)) 50%, hsl(var(--blood-dark)) 100%)',
@@ -207,7 +207,7 @@ const ProtocoleSection = () => {
               backgroundClip: 'text',
               filter: 'drop-shadow(0 0 20px hsl(var(--blood) / 0.3))'
             }}>
-                La Rascalov est celui qui tient l'échelle.
+                On repartira avec tout.
               </p>
               <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-6xl text-blood/20 font-serif">»</div>
             </blockquote>
@@ -222,21 +222,21 @@ const ProtocoleSection = () => {
             {/* Sub-messages */}
             <div className="space-y-3 relative">
               <p className="font-rajdhani text-base md:text-lg text-steel/70 tracking-wide">
-                Nous ne cherchons pas la guerre contre la police ou les gangs.
+                On ne cherche pas la guerre contre la police ou les gangs.
               </p>
               <p className="font-rajdhani text-lg md:text-xl text-ivory font-medium">
-                Nous cherchons le{' '}
+                On cherche à{' '}
                 <span className="font-semibold" style={{
                 background: 'linear-gradient(90deg, hsl(var(--blood)) 0%, hsl(var(--blood-glow)) 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text'
               }}>
-                  CONTRÔLE
+                  S'IMPOSER
                 </span>.
               </p>
               <p className="font-rajdhani text-base md:text-lg text-steel/60 italic">
-                Et le contrôle commence par le silence.
+                Et ça commence maintenant.
               </p>
             </div>
 
