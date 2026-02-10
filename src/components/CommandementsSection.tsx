@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import SectionStatus from './SectionStatus';
 import { 
   VolumeX, 
   Crosshair, 
@@ -205,6 +206,7 @@ const CommandementsSection = () => {
             <span className="text-xs">- Rapport #47</span>
           </div>
         </motion.div>
+        <SectionStatus text="STATUT : EN APPLICATION — CODE SACRÉ" delay={1} />
       </div>
     </section>
   );

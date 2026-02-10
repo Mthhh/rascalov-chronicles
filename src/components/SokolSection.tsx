@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
+import SectionStatus from './SectionStatus';
 
 // Import images
 import sokolDocks from '@/assets/sokol-docks.jpg';
@@ -34,7 +35,25 @@ const SokolSection = () => {
     status: "PLANIFIÉ",
     image: sokolInfluence
   }];
+  const [showGlitch, setShowGlitch] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowGlitch(true);
+      setTimeout(() => setShowGlitch(false), 150);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
   return <section id="sokol" ref={ref} className="relative min-h-screen py-32 px-6 overflow-hidden">
+      {/* Interference overlay */}
+      {showGlitch && (
+        <div className="absolute inset-0 z-30 pointer-events-none opacity-30" style={{
+          backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, hsl(var(--steel) / 0.4) 2px, hsl(var(--steel) / 0.4) 4px)',
+          animation: 'grain 0.1s steps(3) infinite',
+        }} />
+      )}
+
       {/* Technical grid background */}
       <div className="absolute inset-0 opacity-[0.03]">
         <div className="absolute inset-0" style={{
@@ -186,6 +205,8 @@ const SokolSection = () => {
             </p>
           </div>
         </motion.div>
+
+        <SectionStatus text="STATUT : EN ATTENTE... PHASE RASCALOV" delay={1} />
       </div>
     </section>;
 };

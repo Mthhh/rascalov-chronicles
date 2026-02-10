@@ -1,6 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { User, Brain, Shield, Eye, MousePointer } from 'lucide-react';
+import SectionStatus from './SectionStatus';
 import CharacterModal from './CharacterModal';
 
 import azarovImage from '@/assets/character-azarov.jpg';
@@ -231,6 +232,8 @@ const EmissairesSection = () => {
           </div>
         </motion.div>
       </div>
+
+        <SectionStatus text="STATUT : ÉMISSAIRES EN PLACE — PHASE FAMILLE" delay={1} />
 
       {/* Character Modal */}
       <CharacterModal
