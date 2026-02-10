@@ -98,13 +98,14 @@ const SokolSection = () => {
           </div>
           
           <p className="font-rajdhani text-base md:text-lg text-center text-foreground/60 mb-4">
-            Le Projet Sokol est actuellement en phase d'implantation initiale. La cellule présente à Los Santos 
-            construit progressivement les fondations nécessaires à l'établissement complet de l'infrastructure Rascalov.
+            Le Projet Sokol n'est pas une conquête immédiate — c'est un processus. La cellule présente à Los Santos 
+            n'est encore qu'un <span className="text-ivory font-medium">gang en pleine structuration</span>, mais chaque opération 
+            construit les fondations de ce que la Rascalov redeviendra.
           </p>
           <p className="font-rajdhani text-xl md:text-2xl text-center text-foreground/80">
             Alors que les gangs locaux se battent pour des coins de rue,
             <br />
-            <span className="text-ivory font-semibold">la Rascalov déploie le Projet Sokol (Le Faucon).</span>
+            <span className="text-ivory font-semibold">la Rascalov prépare quelque chose de bien plus grand.</span>
           </p>
           
           <p className="mt-4 text-center font-orbitron text-sm text-primary tracking-wider">

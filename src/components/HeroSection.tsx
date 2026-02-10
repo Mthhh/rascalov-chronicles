@@ -194,7 +194,7 @@ const HeroSection = ({
             backgroundClip: 'text'
           }}
         >
-          Ceux qui nous défient tombent
+          Un gang. Une famille. Un empire en construction.
         </p>
         <p 
           className="font-cinzel text-sm md:text-base tracking-[0.3em] uppercase leading-loose mt-1"
@@ -205,7 +205,7 @@ const HeroSection = ({
             backgroundClip: 'text'
           }}
         >
-          Ceux qui nous suivent vivent
+          Los Santos n'est que le commencement.
         </p>
       </motion.div>
 

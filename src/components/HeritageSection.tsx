@@ -216,14 +216,17 @@ const HeritageSection = () => {
                     </h3>
                   </div>
 
-                  <p className="font-rajdhani text-foreground/70 leading-relaxed text-sm md:text-base">
+                  <p className="font-rajdhani text-foreground/70 leading-relaxed text-sm md:text-base mb-3">
                     La Rascalov est née dans le froid et le silence des chantiers navals 
                     de <span className="text-ivory font-medium">Saint-Pétersbourg</span>, fondée par 
                     <span className="text-blood font-semibold underline decoration-blood/40 underline-offset-2"> Sergueï Mikhailov</span> dans 
-                    le chaos de l'après-URSS. Composée d'anciens officiers, de vétérans et d'hommes sans avenir, 
-                    elle a bâti sa puissance sur le contrôle invisible des flux logistiques de la 
-                    <span className="text-ivory font-medium">mer Baltique</span>. Mais suite à des pressions politiques 
-                    et des pertes stratégiques, la direction a pris une décision cruciale : envoyer une cellule à Los Santos.
+                    le chaos de l'après-URSS. Composée d'anciens officiers et de vétérans sans avenir, 
+                    elle a dominé les flux logistiques de la <span className="text-ivory font-medium">mer Baltique</span> pendant des décennies.
+                  </p>
+                  <p className="font-rajdhani text-foreground/60 leading-relaxed text-sm md:text-base">
+                    Mais toute structure finit par devenir une cible. Suite à des pressions politiques et des pertes stratégiques, 
+                    la direction a pris une décision cruciale : <span className="text-blood font-semibold">envoyer une cellule à Los Santos</span>. 
+                    Pas une armée. Pas un empire. <span className="text-ivory font-medium">Une poignée d'hommes.</span>
                   </p>
 
                   <div className="mt-6 pt-4 border-t border-steel/15 flex items-center justify-between">
@@ -302,13 +305,18 @@ const HeritageSection = () => {
                     </h3>
                   </div>
 
-                  <p className="font-rajdhani text-foreground/70 leading-relaxed text-sm md:text-base">
-                    À leur arrivée à <span className="text-blood font-semibold underline decoration-blood/40 underline-offset-2">Los Santos</span>, 
-                    ils n'étaient rien. Pas de ressources, pas d'influence, pas de territoire. Pour survivre, 
-                    ils ont opéré dans l'ombre : petits braquages, vols ciblés, protection. Progressivement, 
-                    la cellule s'est structurée. Les opérations sont devenues plus propres, les décisions plus calculées. 
-                    Ce qui n'était qu'un groupe de survivants est devenu une organisation. Et avec elle, le premier pilier a émergé : 
-                    <span className="text-ivory font-medium">MM Global Export</span>.
+                  <p className="font-rajdhani text-foreground/70 leading-relaxed text-sm md:text-base mb-3">
+                    À leur arrivée, ils n'étaient <span className="text-blood font-semibold">rien</span>. 
+                    Pas de ressources. Pas d'influence. Pas de territoire. 
+                    Juste des survivants isolés dans une ville qui ne leur appartenait pas. 
+                    Ils ont commencé comme un <span className="text-ivory font-medium">gang de rue</span> : petits braquages, vols ciblés, protection.
+                  </p>
+                  <p className="font-rajdhani text-foreground/60 leading-relaxed text-sm md:text-base">
+                    Mais chaque action avait un objectif. Observer. Comprendre. Identifier les faiblesses. 
+                    Progressivement, le gang est devenu une <span className="text-ivory font-medium">famille structurée</span>. 
+                    Les opérations plus propres. Les décisions plus calculées. 
+                    Et le premier pilier a émergé : <span className="text-blood font-semibold underline decoration-blood/40 underline-offset-2">MM Global Export</span>. 
+                    L'objectif final ? Devenir <span className="text-ivory font-medium">LA RASCALOV</span>.
                   </p>
 
                   <div className="mt-6 pt-4 border-t border-steel/15 flex items-center justify-between">
@@ -335,7 +343,10 @@ const HeritageSection = () => {
                 <div className="w-16 md:w-32 h-px bg-gradient-to-l from-transparent via-steel/30 to-steel/50" />
               </div>
 
-              <p className="font-rajdhani text-base md:text-lg text-steel/70 tracking-wide">
+              <p className="font-rajdhani text-sm md:text-base text-steel/70 tracking-wide">
+                Ils étaient un gang. Ils sont devenus une famille.
+              </p>
+              <p className="font-rajdhani text-base md:text-lg text-steel/80 tracking-wide mt-2">
                 La Rascalov n'est pas encore pleinement implantée à Los Santos.
               </p>
               <p 
@@ -348,7 +359,7 @@ const HeritageSection = () => {
                   filter: 'drop-shadow(0 0 15px hsl(var(--blood) / 0.3))'
                 }}
               >
-                ELLE EST EN TRAIN DE RENAÎTRE.
+                MAIS ELLE EST EN TRAIN DE RENAÎTRE.
               </p>
             </motion.div>
           </div>
