@@ -64,6 +64,7 @@ const TimelineSection = () => {
       docLabel: 'SURVEILLANCE PORTUAIRE',
       docDesc: 'Arrivée non-identifiée — Docks LS',
       phase: 'GANG',
+      current: true,
     },
     {
       year: '20XX',
@@ -78,7 +79,6 @@ const TimelineSection = () => {
       docLabel: 'DOSSIER INTERNE',
       docDesc: 'Enregistrement MM Global Export',
       phase: 'FAMILLE',
-      current: true,
     },
     {
       year: '20XX',
