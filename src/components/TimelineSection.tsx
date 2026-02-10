@@ -66,7 +66,7 @@ const TimelineSection = () => {
       phase: 'GANG',
     },
     {
-      year: '2026',
+      year: '20XX',
       location: 'Los Santos',
       title: 'LA STRUCTURATION',
       subtitle: 'La Famille — Phase Active',
