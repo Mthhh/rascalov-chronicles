@@ -222,7 +222,7 @@ const ProtocoleSection = () => {
             {/* Sub-messages */}
             <div className="space-y-3 relative">
               <p className="font-rajdhani text-base md:text-lg text-steel/70 tracking-wide">
-                On ne cherche pas la guerre contre la police ou les gangs.
+                On n'est pas là pour faire du bruit. On est là pour durer.
               </p>
               <p className="font-rajdhani text-lg md:text-xl text-ivory font-medium">
                 On cherche à{' '}
