@@ -153,14 +153,16 @@ const FacadeSection = () => {
                 </span>
 
                 <p className="font-rajdhani text-foreground/70 leading-relaxed mb-6">
-                  Cette entreprise de transit international constitue la <span className="text-ivory">couverture légale parfaite</span> pour 
-                  l'ensemble des opérations logistiques de la Rascalov à Los Santos. Elle permet de justifier le transit de marchandises, 
-                  le stockage en entrepôt sécurisé et la gestion d'une <span className="text-ivory">flotte complète de véhicules</span> à travers toute l'île.
+                  Quand on passe de <span className="text-ivory">gang de rue</span> à <span className="text-ivory">famille structurée</span>, 
+                  il faut une façade. MM Global Export est cette façade — la <span className="text-ivory">couverture légale parfaite</span> pour 
+                  l'ensemble des opérations logistiques de la cellule à Los Santos. Transit de marchandises, 
+                  stockage sécurisé, <span className="text-ivory">flotte complète de véhicules</span>.
                 </p>
 
                 <p className="font-rajdhani text-foreground/60 leading-relaxed mb-4">
-                  MM Global Export constitue la <span className="text-primary">première étape de l'implantation logistique</span> de la cellule 
-                  Rascalov à Los Santos et évoluera progressivement avec l'expansion de ses opérations.
+                  C'est la <span className="text-primary">première vraie infrastructure</span> de la cellule. 
+                  Le premier signe que ce groupe n'est plus un simple gang, mais le début de quelque chose de bien plus grand. 
+                  Elle évoluera avec l'expansion — <span className="text-ivory">comme la Rascalov elle-même</span>.
                 </p>
 
                 <p className="font-rajdhani text-foreground/60 leading-relaxed mb-8">
