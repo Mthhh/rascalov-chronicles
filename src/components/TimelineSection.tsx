@@ -81,7 +81,7 @@ const TimelineSection = () => {
       phase: 'FAMILLE',
     },
     {
-      year: '????',
+      year: '20XX',
       location: 'Classifié',
       title: 'PROJET SOKOL',
       subtitle: 'La Rascalov — Objectif Final',
