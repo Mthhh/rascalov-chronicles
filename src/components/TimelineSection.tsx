@@ -85,7 +85,7 @@ const TimelineSection = () => {
       location: 'Classifié',
       title: 'PROJET SOKOL',
       subtitle: 'La Rascalov — Objectif Final',
-      description: 'Toutes les opérations actuelles convergent vers un seul point. Quand le moment viendra, la cellule ne sera plus une cellule. Elle sera LA RASCALOV. Le Faucon ne dort pas — il observe. Et quand il prendra son envol, personne ne pourra l\'arrêter.',
+      description: 'Toutes les opérations actuelles convergent vers un seul point. Quand le moment viendra, la cellule ne sera plus une cellule. Elle sera LA RASCALOV. Le Faucon ne dort pas il observe. Et quand il prendra son envol, personne ne pourra l\'arrêter.',
       icon: Target,
       russian: 'ОПЕРАЦИЯ СОКОЛ',
       image: timeline2024,
